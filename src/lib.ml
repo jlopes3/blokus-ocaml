@@ -80,7 +80,6 @@ let pieces: string list list list list = [piece1;piece2;piece3;piece4;piece5]
 (*
 (* Loads initial game information into first part of pair, Load board into second part of pair
    Information is from state.txt
-
    First Part Format: [<List of which number pieces Red has>;
                        <List of which number pieces Green has>;
                        <List of which number pieces Blue has>;
@@ -100,7 +99,6 @@ let load_game : (string list list, string list list)
   First command line argument is the executable
   Second command line arugment is the number of the piece you want to place
   Third command line argument is the coordinate of the piece you want to play (coordinate of the left most part in the top row of the piece)
-
   First two parts of return value are the oarts from load_gamee
   Third part is a string list in this format ["#";"A1"]
    
@@ -125,7 +123,6 @@ let play_piece (tuple: (string list list, string list list, string list)): (stri
   The inner list eleements are separated by spaces
   Thee outer list eelements are separated by newlines
   The first and second part are separated by a newline
-
   Here is the information that is in state.txt:
   First Part Format: [<List of which number pieces Red has>;
                        <List of which number pieces Green has>;
@@ -147,7 +144,3 @@ let write_game (tuple:(string list list, string list list)) :
 *)  
 let print_state :
 *)
-
-
-
-
