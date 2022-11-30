@@ -7,7 +7,7 @@ open Lib
 let command_args = Array.to_list (Sys.get_argv ());;
 
 let () = 
-  if (String.equal (List.nth_exn command_args 1) "init") then create_game
+  if (String.equal (List.nth_exn command_args 1) "init") then create_game (List.nth_exn command_args 2)
   else print_endline "did not initialize";;
     (*
     load_game
