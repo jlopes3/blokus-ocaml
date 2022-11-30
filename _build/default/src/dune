@@ -1,0 +1,26 @@
+(library
+  (name lib)
+  (modules lib)
+  (libraries 
+    core
+    ppx_deriving_yojson
+    core_unix.sys_unix
+    )
+    (preprocess (pps bisect_ppx ppx_jane ppx_deriving_yojson))
+    )
+
+(executable
+  (name blokus)
+  (modules blokus)
+  (preprocess (pps ppx_deriving_yojson ppx_jane))
+  (libraries
+    lib
+    core
+    core_unix.sys_unix
+    core_unix.command_unix
+    core_unix
+    yojson
+    ppx_deriving_yojson
+    stdio
+    )
+    )
