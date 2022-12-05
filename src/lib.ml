@@ -7,6 +7,7 @@ open Core
   First representation: P 
 *)
 let piece1: string list list list = [[["P"]]];;
+let piece1String: string = "P";;
 
 
 (* Second piece in all representations 
@@ -16,6 +17,8 @@ let piece1: string list list list = [[["P"]]];;
                          P
 *)
 let piece2: string list list list = [[["P";"P"]];  [["P"];["P"]]];;
+let piece2String: string ="PP  P
+    P";;
 
 (* Third piece in all representations 
    
@@ -93,7 +96,7 @@ let piece21: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];[
 
 (* There are 21 total pieces, more will be made *)
 (* List of all pieces *)
-let pieces: string list list list list = [piece1;piece2;piece3;piece4;piece5;piece6;piece7;piece8;piece9;piece10;piece11;piece12;piece13;piece14;piece15;piece16;piece17;piece18;piece19;piece20;piece21]
+let pieces: string list list list list = [piece1;piece1;piece2;piece3;piece4;piece5;piece6;piece7;piece8;piece9;piece10;piece11;piece12;piece13;piece14;piece15;piece16;piece17;piece18;piece19;piece20;piece21]
 
 
 
@@ -144,17 +147,41 @@ let ai_string (num_ai: string) : string =
   else "      ERROR\n";;
 
 
-(*
-let create_game = print_endline (board_to_string empty_board);;
-*)
-let create_game (num_ai: string) = 
-  Out_channel.write_all "state.txt" ~data:((pieces_to_string_file [num_list; num_list; num_list; num_list]) ^ (ai_string num_ai) ^ "      R\n"^ (board_to_string_file empty_board));
-  (* load_game |> print_state;         will uncomment when this is done *)
-  print_endline "testing";;
 
 
+(* Make a string from the file contents *)
+let make_string_from_file (file : string) : string = file |> In_channel.read_all;;
 
-(*
+let make_list_of_lines (curr: string) : string list = curr |> String.split_on_chars ~on: (['\t'; '\r'; '\n'; '\x0C']);;
+
+let empty_string_bool (curr: string) : bool =
+  if ((String.length curr) = 0) then false
+  else true;;
+
+let make_list_of_chars (curr: string) : string list = curr |> String.split_on_chars ~on: (['\t'; '\r'; '\n'; ' '; '\x0C']) |> List.filter ~f:(empty_string_bool);;
+
+
+let rec subset_helper (data: 'a list) (final: int) (index: int) : 'a list =
+  if (index = List.length data) then []
+  else if ((index) = final + 1) then []
+  else List.nth_exn data index :: subset_helper data final (index + 1);;
+
+let subset (data: 'a list) (start: int) (final: int) : 'a list =
+  subset_helper data final start;;
+
+let load_first_part =
+  subset(make_string_from_file "state.txt"
+  |> make_list_of_lines)
+0 5
+  |> List.map ~f:(make_list_of_chars);;
+
+let load_second_part =
+  subset(make_string_from_file "state.txt"
+  |> make_list_of_lines)
+6 25
+  |> List.map ~f:(make_list_of_chars);;
+
+
 (* Loads initial game information into first part of pair, Load board into second part of pair
    Information is from state.txt
    First Part Format: [<List of which number pieces Red has>;
@@ -168,8 +195,10 @@ let create_game (num_ai: string) =
                       R, G, B, and Y and taken by the respective player
    
 *)
-let load_game : (string list list, string list list)
-*)
+let load_game =
+  (load_first_part, load_second_part);;
+
+
 
 (*  
 (* Processes information from the command line
@@ -214,10 +243,38 @@ let play_piece (tuple: (string list list, string list list, string list)): (stri
 let write_game (tuple:(string list list, string list list)) :
 *)
 
-(*
-(* Print the current state of the game in state.txt to stdio
+
+
+let get_first (pair: 'a * 'b): 'a =
+  let (r1, _) = pair in
+    r1;;
+
+let get_second (pair: 'a * 'b): 'b =
+  let (_, r2) = pair in
+    r2;;
+
+let intro_string (color: string) : string =
+  if (String.equal color "R") then "\n     It is red's turn!\n     Here are your pieces:\n"
+  else if (String.equal color "Y") then "\n     It is yellow's turn!\n     Here are your pieces:\n"
+  else if (String.equal color "B") then "\n     It is blue's turn!\n     Here are your pieces:\n"
+  else if (String.equal color "G") then "\n     It is green's turn!\n     Here are your pieces:\n"
+  else "\n     ERROR!\n";;
+
+let player_string (data: string list list): string =
+  intro_string (List.nth_exn (List.nth_exn data 5) 0);;
   
+
+(* Print the current state of the game in state.txt to stdio
   This first prints the board, then whose turn it is, then the pieces of the current playeer
 *)  
-let print_state :
-*)
+let print_state (loaded: (string list list * string list list)) =
+  print_endline (board_to_string_stdio (get_second loaded) ^ player_string (get_first loaded));;
+
+
+
+
+
+
+  let create_game (num_ai: string) = 
+    Out_channel.write_all "state.txt" ~data:((pieces_to_string_file [num_list; num_list; num_list; num_list]) ^ (ai_string num_ai) ^ "      R\n"^ (board_to_string_file empty_board));
+    load_game |> print_state;;
