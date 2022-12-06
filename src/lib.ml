@@ -7,7 +7,7 @@ open Core
   First representation: P 
 *)
 let piece1: string list list list = [[["P"]]];;
-let piece1String: string = "P";;
+let piece1String: string = "     Piece 1:\n     P\n";;
 
 
 (* Second piece in all representations 
@@ -17,8 +17,7 @@ let piece1String: string = "P";;
                          P
 *)
 let piece2: string list list list = [[["P";"P"]];  [["P"];["P"]]];;
-let piece2String: string ="PP  P
-    P";;
+let piece2String: string ="     Piece 2:\n     PP  P\n         P\n";;
 
 (* Third piece in all representations 
    
@@ -32,7 +31,7 @@ let piece2String: string ="PP  P
                     X P 
 *)
 let piece3: string list list list = [[["X";"P"];["P";"P"]];  [["P";"X"];["P";"P"]];  [["P";"P"];["P";"X"]];  [["P";"P"];["X";"P"]]];;
-
+let piece3String: string ="     Piece 3:\n      P P  PP PP\n     PP PP P   P\n";;
 
 (* Fourth piece in all representations 
    
@@ -42,10 +41,21 @@ let piece3: string list list list = [[["X";"P"];["P";"P"]];  [["P";"X"];["P";"P"
                     P
                     P
 *)
-let piece4: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"]]];;
+let piece4: string list list list = [[["P";"P";"P"]];  [["P"];["P"];["P"]]];;
+let piece4String: string ="     Piece 4:\n     PPP  P\n          P\n          P\n";;
 
+(* Fourth piece in all representations 
+   
+  Representation 1: P P P P   
+  Representation 2: P
+                    P
+                    P
+                    P
+*)
+let piece5: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"]]];;
+let piece5String: string ="     Piece 5:\n     PPPP  P\n           P\n           P\n           P\n";;
 
-(* Fifth piece in all representations 
+(* Sixth piece in all representations 
    
   Representation 1: X X P
                     P P P   
@@ -68,27 +78,68 @@ let piece4: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["
                     P X
                     P X
 *)
-let piece5: string list list list = [[["X";"X";"P"];["P";"P";"P"]];   [["P";"X"];["P";"X"];["P";"P"]];     [["P";"P";"P"];["P";"X";"X"]];        [["P";"P"];["X";"P"];["X";"P"]];         [["P";"X";"X"];["P";"P";"P"]];         [["X";"P"];["X";"P"];["P";"P"]];          [["P";"P";"P"];["X";"X";"P"]];           [["P";"P"];["P";"X"];["P";"X"]]    ];;
+let piece6: string list list list = [[["X";"X";"P"];["P";"P";"P"]];   [["P";"X"];["P";"X"];["P";"P"]];     [["P";"P";"P"];["P";"X";"X"]];        [["P";"P"];["X";"P"];["X";"P"]];         [["P";"X";"X"];["P";"P";"P"]];         [["X";"P"];["X";"P"];["P";"P"]];          [["P";"P";"P"];["X";"X";"P"]];           [["P";"P"];["P";"X"];["P";"X"]]    ];;
+let piece6String: string ="     Piece 6:\n       P P  PPP PP P    P PPP PP\n     PPP P  P    P PPP  P   P P \n         PP      P     PP     P\n";;
 
+
+(* Seventh piece in all representations 
+  Representation 1: P P X
+                    X P P   
+  Representation 2: X P P
+                    P P X 
+  Representation 3: X P
+                    P P
+                    P X
+  Representation 4: P X
+                    P P
+                    X P
+*)
+let piece7: string list list list = [[["P";"P";"X"];["X";"P";"P"]];  [["X";"P";"P"];["P";"P";"X"]];   [["X";"P"];["P";"P"];["P";"X"]];    [["P";"X"];["P";"P"];["X";"P"]] ];;
+let piece7String: string ="     Piece 7:\n     PP  \n      PP ";;
 
 (* These pieces are just fillers for now *)
-
-let piece6: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"]]];;
-let piece7: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"]]];;
 let piece8: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"]]];;
+let piece8String: string ="PP  P
+    P";;
 let piece9: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"]]];;
+let piece9String: string ="PP  P
+    P";;
 let piece10: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"]]];;
+let piece10String: string ="PP  P
+    P";;
 let piece11: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"]]];;
+let piece11String: string ="PP  P
+    P";;
 let piece12: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"]]];;
+let piece12String: string ="PP  P
+    P";;
 let piece13: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"]]];;
+let piece13String: string ="PP  P
+    P";;
 let piece14: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"]]];;
+let piece14String: string ="PP  P
+    P";;
 let piece15: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"]]];;
+let piece15String: string ="PP  P
+    P";;
 let piece16: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"]]];;
+let piece16String: string ="PP  P
+    P";;
 let piece17: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"]]];;
+let piece17String: string ="PP  P
+    P";;
 let piece18: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"]]];;
+let piece18String: string ="PP  P
+    P";;
 let piece19: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"]]];;
+let piece19String: string ="PP  P
+    P";;
 let piece20: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"]]];;
+let piece20String: string ="PP  P
+    P";;
 let piece21: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"]]];;
+let piece21String: string ="PP  P
+    P";;
 
 
 
@@ -98,6 +149,8 @@ let piece21: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];[
 (* List of all pieces *)
 let pieces: string list list list list = [piece1;piece1;piece2;piece3;piece4;piece5;piece6;piece7;piece8;piece9;piece10;piece11;piece12;piece13;piece14;piece15;piece16;piece17;piece18;piece19;piece20;piece21]
 
+(* List of string representation of all pieces *)
+let piecesStrings: string list = [piece1String;piece2String;piece3String;piece4String;piece5String;piece6String;piece7String;piece2String;piece2String;piece2String;piece2String;piece2String;piece2String;piece2String;piece2String;piece2String;piece2String;piece2String;piece2String;piece2String;piece2String];;
 
 
 
@@ -260,8 +313,11 @@ let intro_string (color: string) : string =
   else if (String.equal color "G") then "\n     It is green's turn!\n     Here are your pieces:\n"
   else "\n     ERROR!\n";;
 
+let combine_strings_with_newline (first: string) (second: string) : string =
+  first ^ "\n" ^ second;;
+
 let player_string (data: string list list): string =
-  intro_string (List.nth_exn (List.nth_exn data 5) 0);;
+  intro_string (List.nth_exn (List.nth_exn data 5) 0) ^ (List.fold ~f:(combine_strings_with_newline) ~init:("") piecesStrings);;
   
 
 (* Print the current state of the game in state.txt to stdio
