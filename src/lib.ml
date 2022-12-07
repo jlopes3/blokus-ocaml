@@ -548,11 +548,25 @@ let intro_string (color: string) : string =
   else if (String.equal color "G") then "\n     It is green's turn!\n     Here are your pieces:\n"
   else "\n     ERROR!\n";;
 
+
+let rec get_pieces_helper (curr: int) (hand: string list) : string list =
+  if (curr > 20) then []
+  else if (curr > List.length hand) then []
+  else List.nth_exn piecesStrings (int_of_string (List.nth_exn hand curr)) :: get_pieces_helper (curr + 1) hand;;
+
+let get_pieces  (color: string) (data: string list list) : string list =
+if (String.equal color "R") then get_pieces_helper 0 (List.nth_exn data 0)
+else if (String.equal color "Y") then get_pieces_helper 0 (List.nth_exn data 1)
+else if (String.equal color "B") then get_pieces_helper 0 (List.nth_exn data 2)
+else if (String.equal color "G") then get_pieces_helper 0 (List.nth_exn data 3)
+else ["\n     ERROR!\n"];;
+
+
 let combine_strings_with_newline (first: string) (second: string) : string =
   first ^ "\n" ^ second;;
 
 let player_string (data: string list list): string =
-  intro_string (List.nth_exn (List.nth_exn data 5) 0) ^ (List.fold ~f:(combine_strings_with_newline) ~init:("") piecesStrings);;
+  intro_string (List.nth_exn (List.nth_exn data 5) 0) ^ (List.fold ~f:(combine_strings_with_newline) ~init:("") (get_pieces (List.nth_exn (List.nth_exn data 5) 0) data));;
   
 
 (* Print the current state of the game in state.txt to stdio

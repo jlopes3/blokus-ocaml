@@ -381,15 +381,11 @@ let piece21: string list list list = [[["P";"P";"X"];["X";"P";"X"];["X";"P";"P"]
 let piece21String: string ="     Piece 21:\n     PP    P  PP P\n      P  PPP  P  PPP\n      PP P   PP    P\n";;
 
 
-
-
-
-
 (* List of all pieces *)
-let pieces: string list list list list = [piece1;piece1;piece2;piece3;piece4;piece5;piece6;piece7;piece8;piece9;piece10;piece11;piece12;piece13;piece14;piece15;piece16;piece17;piece18;piece19;piece20;piece21]
+let pieces: string list list list list = [[[["Placeholder"]]];piece1;piece2;piece3;piece4;piece5;piece6;piece7;piece8;piece9;piece10;piece11;piece12;piece13;piece14;piece15;piece16;piece17;piece18;piece19;piece20;piece21]
 
 (* List of string representation of all pieces *)
-let piecesStrings: string list = [piece1String;piece2String;piece3String;piece4String;piece5String;piece6String;piece7String;piece8String;piece9String;piece10String;piece11String;piece12String;piece13String;piece14String;piece15String;piece16String;piece17String;piece18String;piece19String;piece20String;piece21String];;
+let piecesStrings: string list = ["Placeholder";piece1String;piece2String;piece3String;piece4String;piece5String;piece6String;piece7String;piece8String;piece9String;piece10String;piece11String;piece12String;piece13String;piece14String;piece15String;piece16String;piece17String;piece18String;piece19String;piece20String;piece21String];;
 
 
 
@@ -552,11 +548,25 @@ let intro_string (color: string) : string =
   else if (String.equal color "G") then "\n     It is green's turn!\n     Here are your pieces:\n"
   else "\n     ERROR!\n";;
 
+
+let rec get_pieces_helper (curr: int) (hand: string list) : string list =
+  if (curr > 20) then []
+  else if (curr > List.length hand) then []
+  else List.nth_exn piecesStrings (int_of_string (List.nth_exn hand curr)) :: get_pieces_helper (curr + 1) hand;;
+
+let get_pieces  (color: string) (data: string list list) : string list =
+if (String.equal color "R") then get_pieces_helper 0 (List.nth_exn data 0)
+else if (String.equal color "Y") then get_pieces_helper 0 (List.nth_exn data 1)
+else if (String.equal color "B") then get_pieces_helper 0 (List.nth_exn data 2)
+else if (String.equal color "G") then get_pieces_helper 0 (List.nth_exn data 3)
+else ["\n     ERROR!\n"];;
+
+
 let combine_strings_with_newline (first: string) (second: string) : string =
   first ^ "\n" ^ second;;
 
 let player_string (data: string list list): string =
-  intro_string (List.nth_exn (List.nth_exn data 5) 0) ^ (List.fold ~f:(combine_strings_with_newline) ~init:("") piecesStrings);;
+  intro_string (List.nth_exn (List.nth_exn data 5) 0) ^ (List.fold ~f:(combine_strings_with_newline) ~init:("") (get_pieces (List.nth_exn (List.nth_exn data 5) 0) data));;
   
 
 (* Print the current state of the game in state.txt to stdio
@@ -570,6 +580,6 @@ let print_state (loaded: (string list list * string list list)) =
 
 
 
-  let create_game (num_ai: string) = 
-    Out_channel.write_all "state.txt" ~data:((pieces_to_string_file [num_list; num_list; num_list; num_list]) ^ (ai_string num_ai) ^ "      R\n"^ (board_to_string_file empty_board));
-    load_game |> print_state;;
+let create_game (num_ai: string) = 
+  Out_channel.write_all "state.txt" ~data:((pieces_to_string_file [num_list; num_list; num_list; num_list]) ^ (ai_string num_ai) ^ "      R\n"^ (board_to_string_file empty_board));
+  load_game |> print_state;;
