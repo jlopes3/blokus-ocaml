@@ -52,3 +52,5 @@ implementing the function in the order called in blokus.ml.
 
 The second goal is to make the application work with AI players. I intend to have a working version
 with dumb AI players by December 2. I intend on have a more skilled AI player by December 7.
+
+lwt and lambaterm

@@ -270,37 +270,126 @@ let piece14String: string ="     Piece 14:\n     PP PPP  P PP  PP PPP P   PP\n  
 let piece15: string list list list = [[["P";"P";"P"];["X";"P";"X"];["X";"P";"X"]];   [["X";"X";"P"];["P";"P";"P"];["X";"X";"P"]];        [["X";"P";"X"];["X";"P";"X"];["P";"P";"P"]];        [["P";"X";"X"];["P";"P";"P"];["P";"X";"X"]]  ];;
 let piece15String: string ="     Piece 15:\n     PPP   P  P  P  \n      P  PPP  P  PPP\n      P    P PPP P\n";;
 
+(* Sixteenth piece in all representations 
+   
+  Representation 1: P X P
+                    P P P   
+  Representation 2: P P
+                    P X
+                    P P
+  Representation 3: P P P
+                    P X P
+  Representation 4: P P
+                    X P
+                    P P
+*)
+let piece16: string list list list = [[["P";"X";"P"];["P";"P";"P"]];   [["P";"P"];["P";"X"];["P";"P"]];        [["P";"P";"P"];["P";"X";"P"]];        [["P";"P"];["X";"P"];["P";"P"]]  ];;
+let piece16String: string ="     Piece 16:\n     P P PP PPP PP \n     PPP P  P P  P \n         PP     PP \n";;
 
-(* These pieces are just fillers for now *)
-let piece16: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"]]];;
-let piece16String: string ="PP  P
-    P";;
-let piece17: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"]]];;
-let piece17String: string ="PP  P
-    P";;
-let piece18: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"]]];;
-let piece18String: string ="PP  P
-    P";;
-let piece19: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"]]];;
-let piece19String: string ="PP  P
-    P";;
-let piece20: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"]]];;
-let piece20String: string ="PP  P
-    P";;
-let piece21: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"]]];;
-let piece21String: string ="PP  P
-    P";;
+(* Seventeenth piece in all representations 
+   
+  Representation 1: P X X
+                    P X X 
+                    P P P
+  Representation 2: P P P
+                    P X X
+                    P X X
+  Representation 3: P P P
+                    X X P
+                    X X P
+  Representation 4: X X P
+                    X X P
+                    P P P
+*)
+let piece17: string list list list = [[["P";"X";"X"];["P";"X";"X"];["P";"P";"P"]];   [["P";"P";"P"];["P";"X";"X"];["P";"X";"X"]];        [["P";"P";"P"];["X";"X";"P"];["X";"X";"P"]];        [["X";"X";"P"];["X";"X";"P"];["P";"P";"P"]]  ];;
+let piece17String: string ="     Piece 17:\n     P   PPP PPP   P \n     P   P     P   P \n     PPP P     P PPP\n";;
+
+(* Eighteenth piece in all representations 
+   
+  Representation 1: P X X
+                    P P X 
+                    X P P
+  Representation 2: X P P
+                    P P X
+                    P X X
+  Representation 3: P P X
+                    X P P
+                    X X P
+  Representation 4: X X P
+                    X P P
+                    P P X
+*)
+let piece18: string list list list = [[["P";"X";"X"];["P";"P";"X"];["X";"P";"P"]];   [["X";"P";"P"];["P";"P";"X"];["P";"X";"X"]];        [["P";"P";"X"];["X";"P";"P"];["X";"X";"P"]];        [["X";"X";"P"];["X";"P";"P"];["P";"P";"X"]]  ];;
+let piece18String: string ="     Piece 18:\n     P    PP PP    P \n     PP  PP   PP  PP \n      PP P     P PP \n";;
+
+(* Ninteenth piece in all representations 
+   
+  Representation 1: X P X
+                    P P P 
+                    X P X
+*)
+let piece19: string list list list = [[["P";"X";"X"];["P";"P";"X"];["X";"P";"P"]]];;
+let piece19String: string ="     Piece 19:\n      P \n     PPP\n      P \n";;
+
+(* Twentieth piece in all representations 
+   
+  Representation 1: X P
+                    P P
+                    X P
+                    X P 
+  Representation 2: X X P X
+                    P P P P
+  Representation 3: P X
+                    P X 
+                    P P
+                    P X
+  Representation 4: P P P P
+                    X P X X
+  Representation 5: P X  
+                    P P
+                    P X
+                    P X
+  Representation 6: X P X X
+                    P P P P
+  Representation 7: X P
+                    X P   
+                    P P
+                    X P
+  Representation 8: P P P P
+                    X X P X
+*)
+let piece20: string list list list = [[["X";"P"];["P";"P"];["X";"P"];["X";"P"]];        [["X";"";"P";"X"];["P";"P";"P";"P"]];             [["P";"X"];["P";"X"];["P";"P"];["P";"X"]];        [["P";"P";"P";"P"];["X";"P";"X";"X"]];        [["P";"X"];["P";"P"];["P";"X"];["P";"X"]];        [["X";"P";"X";"X"];["P";"P";"P";"P"]];        [["X";"P"];["X";"P"];["P";"P"];["X";"P"]];        [["P";"P";"P";"P"];["X";"X";"P";"X"]]     ];;
+let piece20String: string ="     Piece 20:\n      P   P  P  PPPP P   P    P PPPP\n     PP PPPP P   P   PP PPPP  P   P\n      P      PP      P       PP\n      P      P       P        P\n";;
+
+
+(* Twenty-first piece in all representations 
+   
+  Representation 1: P P X
+                    X P X 
+                    X P P
+  Representation 2: X X P
+                    P P P
+                    P X X
+  Representation 3: X P P
+                    X P X
+                    P P X
+  Representation 4: P X X
+                    P P P
+                    X X P
+*)
+let piece21: string list list list = [[["P";"P";"X"];["X";"P";"X"];["X";"P";"P"]];   [["X";"X";"P"];["P";"P";"P"];["P";"X";"X"]];        [["X";"P";"P"];["X";"P";"X"];["P";"P";"X"]];        [["P";"X";"X"];["P";"P";"P"];["X";"X";"P"]]  ];;
+let piece21String: string ="     Piece 21:\n     PP    P  PP P\n      P  PPP  P  PPP\n      PP P   PP    P\n";;
 
 
 
 
 
-(* There are 21 total pieces, more will be made *)
+
 (* List of all pieces *)
 let pieces: string list list list list = [piece1;piece1;piece2;piece3;piece4;piece5;piece6;piece7;piece8;piece9;piece10;piece11;piece12;piece13;piece14;piece15;piece16;piece17;piece18;piece19;piece20;piece21]
 
 (* List of string representation of all pieces *)
-let piecesStrings: string list = [piece1String;piece2String;piece3String;piece4String;piece5String;piece6String;piece7String;piece8String;piece9String;piece10String;piece11String;piece12String;piece13String;piece14String;piece15String;piece2String;piece2String;piece2String;piece2String;piece2String;piece2String];;
+let piecesStrings: string list = [piece1String;piece2String;piece3String;piece4String;piece5String;piece6String;piece7String;piece8String;piece9String;piece10String;piece11String;piece12String;piece13String;piece14String;piece15String;piece16String;piece17String;piece18String;piece19String;piece20String;piece21String];;
 
 
 
