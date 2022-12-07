@@ -1,7 +1,24 @@
 open Core
 
+let get_first (pair: 'a * 'b): 'a =
+  let (r1, _) = pair in
+    r1;;
 
+let get_second (pair: 'a * 'b): 'b =
+  let (_, r2) = pair in
+    r2;;
 
+let get_trio_first (trio: 'a * 'b * 'c): 'a =
+  let (r1, _, _) = trio in
+    r1;;
+
+let get_trio_second (trio: 'a * 'b * 'c): 'b =
+  let (_, r2, _) = trio in
+    r2;;
+
+let get_trio_third (trio: 'a * 'b * 'c): 'c =
+  let (_, _, r3) = trio in
+    r3;;
 (* First piece in all representations 
    
   First representation: P 
@@ -380,7 +397,6 @@ let piece20String: string ="     Piece 20:\n      P   P  P  PPPP P   P    P PPPP
 let piece21: string list list list = [[["P";"P";"X"];["X";"P";"X"];["X";"P";"P"]];   [["X";"X";"P"];["P";"P";"P"];["P";"X";"X"]];        [["X";"P";"P"];["X";"P";"X"];["P";"P";"X"]];        [["P";"X";"X"];["P";"P";"P"];["X";"X";"P"]]  ];;
 let piece21String: string ="     Piece 21:\n     PP    P  PP P\n      P  PPP  P  PPP\n      PP P   PP    P\n";;
 
-
 (* List of all pieces *)
 let pieces: string list list list list = [[[["Placeholder"]]];piece1;piece2;piece3;piece4;piece5;piece6;piece7;piece8;piece9;piece10;piece11;piece12;piece13;piece14;piece15;piece16;piece17;piece18;piece19;piece20;piece21]
 
@@ -454,6 +470,7 @@ let rec subset_helper (data: 'a list) (final: int) (index: int) : 'a list =
   else if ((index) = final + 1) then []
   else List.nth_exn data index :: subset_helper data final (index + 1);;
 
+  (* inclusive *)
 let subset (data: 'a list) (start: int) (final: int) : 'a list =
   subset_helper data final start;;
 
@@ -487,31 +504,55 @@ let load_game =
   (load_first_part, load_second_part);;
 
 
-
-(*  
+ 
 (* Processes information from the command line
   First command line argument is the executable
   Second command line arugment is the number of the piece you want to place
   Third command line argument is the coordinate of the piece you want to play (coordinate of the left most part in the top row of the piece)
-  First two parts of return value are the oarts from load_gamee
-  Third part is a string list in this format ["#";"A1"]
+  First two parts of return value are the parts from load_gamee\
+  Third part is a string list in this format ["Piece#";"PieceRepresentation";"A1"]
    
 *)
-let process_command_line (string list list, string list list): (string list list, string list list, string list)
-*)
+let process_command_line (data: string list list * string list list) (command_args: string list): (string list list * string list list * string list) =
+  (get_first data, get_second data, [(List.nth_exn command_args 1);(List.nth_exn command_args 2);(List.nth_exn command_args 3)]);;
 
 
-(*
+let rec remove_piece_helper (data: string list) (to_remove: string) (curr: int) : string list =
+  if (List.length data = curr) then []
+  else if (String.equal (List.nth_exn data curr) to_remove) then remove_piece_helper data to_remove (curr + 1)
+  else (List.nth_exn data curr) ::  remove_piece_helper data to_remove (curr + 1);;
+
+
+let remove_piece (data: string list) (to_remove: string): string list =
+  remove_piece_helper data to_remove 0;;
+
+let next_color (color: string) : string =
+  if (String.equal color "R") then "Y"
+  else if (String.equal color "Y") then "B"
+  else if (String.equal color "B") then "G"
+  else if (String.equal color "G") then "R"
+  else "ERROR!";;
+
+
+let update_pieces (color: string) (data: string list list) (to_remove: string) : string list list =
+  if (String.equal color "R") then (remove_piece (List.nth_exn data 0) to_remove)  :: (List.nth_exn data 1) :: (List.nth_exn data 2) :: (List.nth_exn data 3) :: (List.nth_exn data 4) :: [[(next_color color)]]
+  else if (String.equal color "Y") then (List.nth_exn data 0) :: (remove_piece (List.nth_exn data 1) to_remove) :: (List.nth_exn data 2) :: (List.nth_exn data 3) :: (List.nth_exn data 4) :: [[(next_color color)]]
+  else if (String.equal color "B") then (List.nth_exn data 0) :: (List.nth_exn data 1) :: (remove_piece (List.nth_exn data 2) to_remove) :: (List.nth_exn data 3) :: (List.nth_exn data 4) :: [[(next_color color)]]
+  else if (String.equal color "G") then (List.nth_exn data 0) :: (List.nth_exn data 1) :: (List.nth_exn data 2) :: (remove_piece (List.nth_exn data 3) to_remove) :: (List.nth_exn data 4) :: [[(next_color color)]]
+  else [["\n     ERROR!\n"]];;
+
 (* Play the piece selected in the third element of the tuple
    Playing the piece entails playing the updating the 
       First element of the tuple: update piecees a player has and whose turn it is
       Second element: update the board with the new piece places
 *)  
-let play_piece (tuple: (string list list, string list list, string list)): (string list list, string list list)
-*)
+let play_piece (tuple: (string list list * string list list * string list)): (string list list * string list list) = 
+    (update_pieces (List.nth_exn (List.nth_exn (get_trio_first tuple) 5) 0) (get_trio_first tuple) (List.nth_exn (get_trio_third tuple) 0), empty_board);;
 
 
-(*
+
+
+
 (* Write the new state of the game to state.txt
   
   The inner list eleements are separated by spaces
@@ -528,18 +569,10 @@ let play_piece (tuple: (string list list, string list list, string list)): (stri
   Second Part Form: List of 20 Lists of 20 length with string of 1 character where X is an open spacee and 
                     R, G, B, and Y and taken by the respective player
 *)  
-let write_game (tuple:(string list list, string list list)) :
-*)
+let write_game (pair:(string list list * string list list)) =
+  Out_channel.write_all "state.txt" ~data:((pieces_to_string_file (subset (get_first pair) 0 3)) ^ (ai_string (string_of_int (List.length (List.nth_exn (get_first pair) 4)))) ^ "      " ^ (List.nth_exn (List.nth_exn (get_first pair) 5) 0) ^ "\n"^ (board_to_string_file (get_second pair)));;
 
 
-
-let get_first (pair: 'a * 'b): 'a =
-  let (r1, _) = pair in
-    r1;;
-
-let get_second (pair: 'a * 'b): 'b =
-  let (_, r2) = pair in
-    r2;;
 
 let intro_string (color: string) : string =
   if (String.equal color "R") then "\n     It is red's turn!\n     Here are your pieces:\n"
@@ -550,16 +583,16 @@ let intro_string (color: string) : string =
 
 
 let rec get_pieces_helper (curr: int) (hand: string list) : string list =
-  if (curr > 20) then []
-  else if (curr > List.length hand) then []
+  if (curr = List.length piecesStrings) then []
+  else if (curr = List.length hand) then []
   else List.nth_exn piecesStrings (int_of_string (List.nth_exn hand curr)) :: get_pieces_helper (curr + 1) hand;;
 
 let get_pieces  (color: string) (data: string list list) : string list =
-if (String.equal color "R") then get_pieces_helper 0 (List.nth_exn data 0)
-else if (String.equal color "Y") then get_pieces_helper 0 (List.nth_exn data 1)
-else if (String.equal color "B") then get_pieces_helper 0 (List.nth_exn data 2)
-else if (String.equal color "G") then get_pieces_helper 0 (List.nth_exn data 3)
-else ["\n     ERROR!\n"];;
+  if (String.equal color "R") then get_pieces_helper 0 (List.nth_exn data 0)
+  else if (String.equal color "Y") then get_pieces_helper 0 (List.nth_exn data 1)
+  else if (String.equal color "B") then get_pieces_helper 0 (List.nth_exn data 2)
+  else if (String.equal color "G") then get_pieces_helper 0 (List.nth_exn data 3)
+  else ["\n     ERROR!\n"];;
 
 
 let combine_strings_with_newline (first: string) (second: string) : string =
@@ -581,5 +614,5 @@ let print_state (loaded: (string list list * string list list)) =
 
 
 let create_game (num_ai: string) = 
-  Out_channel.write_all "state.txt" ~data:((pieces_to_string_file [num_list; num_list; num_list; num_list]) ^ (ai_string num_ai) ^ "      R\n"^ (board_to_string_file empty_board));
+  Out_channel.write_all "state.txt" ~data:((pieces_to_string_file [num_list; num_list; num_list; num_list]) ^ (ai_string num_ai) ^ "      R\n"^ (board_to_string_file empty_board) ^ "\nTESTTESTEESTEAT");
   load_game |> print_state;;
