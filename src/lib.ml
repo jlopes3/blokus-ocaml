@@ -1,12 +1,16 @@
+
 open Core
+
 
 let get_first (pair: 'a * 'b): 'a =
   let (r1, _) = pair in
-    r1;;
+  r1;;
+  
 
 let get_second (pair: 'a * 'b): 'b =
   let (_, r2) = pair in
     r2;;
+
 
 let get_trio_first (trio: 'a * 'b * 'c): 'a =
   let (r1, _, _) = trio in
@@ -19,6 +23,8 @@ let get_trio_second (trio: 'a * 'b * 'c): 'b =
 let get_trio_third (trio: 'a * 'b * 'c): 'c =
   let (_, _, r3) = trio in
     r3;;
+
+
 (* First piece in all representations 
    
   First representation: P 
@@ -474,34 +480,8 @@ let rec subset_helper (data: 'a list) (final: int) (index: int) : 'a list =
 let subset (data: 'a list) (start: int) (final: int) : 'a list =
   subset_helper data final start;;
 
-let load_first_part =
-  subset(make_string_from_file "state.txt"
-  |> make_list_of_lines)
-0 5
-  |> List.map ~f:(make_list_of_chars);;
-
-let load_second_part =
-  subset(make_string_from_file "state.txt"
-  |> make_list_of_lines)
-6 25
-  |> List.map ~f:(make_list_of_chars);;
 
 
-(* Loads initial game information into first part of pair, Load board into second part of pair
-   Information is from state.txt
-   First Part Format: [<List of which number pieces Red has>;
-                       <List of which number pieces Green has>;
-                       <List of which number pieces Blue has>;
-                       <List of which number pieces Yellow has>;
-                       <List of which players are AI i.e. ["B";"Y"] if blue and yellow are AIs;
-                       <List with whose turn it is i.e. ["R"] if it is red's turn]
-  
-    Second Part Form: List of 20 Lists of 20 length with string of 1 character where X is an open spacee and 
-                      R, G, B, and Y and taken by the respective player
-   
-*)
-let load_game =
-  (load_first_part, load_second_part);;
 
 
  
@@ -550,30 +530,6 @@ let play_piece (tuple: (string list list * string list list * string list)): (st
     (update_pieces (List.nth_exn (List.nth_exn (get_trio_first tuple) 5) 0) (get_trio_first tuple) (List.nth_exn (get_trio_third tuple) 0), empty_board);;
 
 
-
-
-
-(* Write the new state of the game to state.txt
-  
-  The inner list eleements are separated by spaces
-  Thee outer list elements are separated by newlines
-  The first and second part are separated by a newline
-  Here is the information that is in state.txt:
-  First Part Format: [<List of which number pieces Red has>;
-                       <List of which number pieces Green has>;
-                       <List of which number pieces Blue has>;
-                       <List of which number pieces Yellow has>;
-                       <List of which players are AI i.e. ["B";"Y"] if blue and yellow are AIs;
-                       <List with whose turn it is i.e. ["R"] if it is red's turn]
-  
-  Second Part Form: List of 20 Lists of 20 length with string of 1 character where X is an open spacee and 
-                    R, G, B, and Y and taken by the respective player
-*)  
-let write_game (pair:(string list list * string list list)) =
-  Out_channel.write_all "state.txt" ~data:((pieces_to_string_file (subset (get_first pair) 0 3)) ^ (ai_string (string_of_int (List.length (List.nth_exn (get_first pair) 4)))) ^ "      " ^ (List.nth_exn (List.nth_exn (get_first pair) 5) 0) ^ "\n"^ (board_to_string_file (get_second pair)));;
-
-
-
 let intro_string (color: string) : string =
   if (String.equal color "R") then "\n     It is red's turn!\n     Here are your pieces:\n"
   else if (String.equal color "Y") then "\n     It is yellow's turn!\n     Here are your pieces:\n"
@@ -613,6 +569,7 @@ let print_state (loaded: (string list list * string list list)) =
 
 
 
-let create_game (num_ai: string) = 
-  Out_channel.write_all "state.txt" ~data:((pieces_to_string_file [num_list; num_list; num_list; num_list]) ^ (ai_string num_ai) ^ "      R\n"^ (board_to_string_file empty_board) ^ "\nTESTTESTEESTEAT");
-  load_game |> print_state;;
+
+
+
+  
