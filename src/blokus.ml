@@ -57,21 +57,30 @@ let load_game =
                     R, G, B, and Y and taken by the respective player
 *)  
 let write_game (pair:(string list list * string list list)) =
-  Out_channel.write_all "state.txt" ~data:((pieces_to_string_file (subset (get_first pair) 0 3)) ^ (ai_string (string_of_int (List.length (List.nth_exn (get_first pair) 4)))) ^ "      " ^ (List.nth_exn (List.nth_exn (get_first pair) 5) 0) ^ "\n"^ (board_to_string_file (get_second pair)));;
+  let oc = Out_channel.create "state.txt" in
+  Out_channel.output_string oc ((pieces_to_string_file (subset (get_first pair) 0 3)) ^ (ai_string (string_of_int (List.length (List.nth_exn (get_first pair) 4)))) ^ "      " ^ (List.nth_exn (List.nth_exn (get_first pair) 5) 0) ^ "\n"^ (board_to_string_file (get_second pair)));
+  Out_channel.flush oc;;
+
 
 
 
 let create_game (num_ai: string) = 
   Out_channel.write_all "state.txt" ~data:((pieces_to_string_file [num_list; num_list; num_list; num_list]) ^ (ai_string num_ai) ^ "      R\n"^ (board_to_string_file empty_board));
-  load_game |> print_state;;
+  ([num_list; num_list; num_list; num_list] @ [[ai_string num_ai]] @ [["R"]], empty_board)|> print_state;;
 
 
 (* Puts command line argumeents into a list*)
 let command_args = Array.to_list (Sys.get_argv ());;
 
 
+let not_init =
+  if (List.length command_args < 4) then print_string ""
+  else 
+    let new_state = process_command_line load_game (command_args) |> play_piece in
+     write_game new_state;
+     print_state new_state;;
+
 let () = 
 if (String.equal (List.nth_exn command_args 1) "init") then create_game (List.nth_exn command_args 2)
-else process_command_line load_game (command_args) |> play_piece |> write_game;
- if (String.equal (List.nth_exn command_args 1) "init") then print_endline ""
- else print_state load_game;;
+else not_init;;
+
