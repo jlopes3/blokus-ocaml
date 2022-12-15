@@ -545,10 +545,19 @@ let rec insert_piece (piece: string list list) (board: string list list) (coord:
   else (subset board curr (coord_row coord + counter - 1)) @ [(insert_piece_col (List.nth_exn piece counter) (List.nth_exn board (coord_row coord + counter)) coord color)]  @ insert_piece piece board coord (counter + 1) (coord_row coord + counter + 1) color;;
 
 let put_piece_on_board (piece: string list list) (board: string list list) (coord: string) (color: string): string list list =
-  if List.length piece = 100 then [[]]
-  else if List.length board = 100 then [[]]
-  else insert_piece piece board coord 0 0 color;;
+  insert_piece piece board coord 0 0 color;;
 
+
+
+
+let try_put_piece_on_board (piece: string list list) (board: string list list) (coord: string) (color: string): bool =
+   if (coord_col coord < 0) then false
+   else if (coord_row coord < 0) then false
+   else if ((coord_col coord) + (List.length (List.nth_exn piece 0)) - 1 > 19) then false
+   else if ((coord_row coord) + (List.length piece) - 1 > 19) then false
+   else if List.length board = 100 then true
+   else if String.length color = 100 then true
+   else true;;
 
 (* Play the piece selected in the third element of the tuple
    Playing the piece entails playing the updating the 
@@ -556,7 +565,9 @@ let put_piece_on_board (piece: string list list) (board: string list list) (coor
       Second element: update the board with the new piece places
 *)  
 let play_piece (tuple: (string list list * string list list * string list)): (string list list * string list list) = 
-    (update_pieces (List.nth_exn (List.nth_exn (get_trio_first tuple) 5) 0) (get_trio_first tuple) (List.nth_exn (get_trio_third tuple) 0), (put_piece_on_board (List.nth_exn (List.nth_exn pieces (int_of_string (List.nth_exn (get_trio_third tuple) 0))) ((-1) + int_of_string (List.nth_exn (get_trio_third tuple) 1))) (get_trio_second tuple) (List.nth_exn (get_trio_third tuple) 2)   (List.nth_exn (List.nth_exn (get_trio_first tuple) 5) 0) ));;
+  if (try_put_piece_on_board (List.nth_exn (List.nth_exn pieces (int_of_string (List.nth_exn (get_trio_third tuple) 0))) ((-1) + int_of_string (List.nth_exn (get_trio_third tuple) 1))) (get_trio_second tuple) (List.nth_exn (get_trio_third tuple) 2)   (List.nth_exn (List.nth_exn (get_trio_first tuple) 5) 0) ) then
+    (update_pieces (List.nth_exn (List.nth_exn (get_trio_first tuple) 5) 0) (get_trio_first tuple) (List.nth_exn (get_trio_third tuple) 0), (put_piece_on_board (List.nth_exn (List.nth_exn pieces (int_of_string (List.nth_exn (get_trio_third tuple) 0))) ((-1) + int_of_string (List.nth_exn (get_trio_third tuple) 1))) (get_trio_second tuple) (List.nth_exn (get_trio_third tuple) 2)   (List.nth_exn (List.nth_exn (get_trio_first tuple) 5) 0) ))
+  else (get_trio_first tuple, get_trio_second tuple);;
 
 
 let intro_string (color: string) : string =
