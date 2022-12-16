@@ -1,4 +1,3 @@
-
 open Core
 
 
@@ -645,13 +644,3 @@ let player_string (data: string list list): string =
 *)  
 let print_state (loaded: (string list list * string list list)) =
   print_endline (board_to_string_stdio (get_second loaded) ^ player_string (get_first loaded));;
-
-
-
-
-
-
-
-
-
-  
