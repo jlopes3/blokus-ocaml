@@ -27,9 +27,11 @@ let get_trio_third (trio: 'a * 'b * 'c): 'c =
 (* First piece in all representations 
    
   First representation: P 
-*)
-let piece1: string list list list = [[["P"]]];;
-let piece1String: string = "     Piece 1:\n     P\n";;
+  let piece1: string list list list = [[["P"]]];;
+  let piece1String: string = "     Piece 1:\n     P\n";;
+  *)
+  let piece1: string list list list = [[["P";"P"]];  [["P"];["P"]]];;
+  let piece1String: string ="     Piece 2:\n     PP  P\n         P\n";;
 
 
 (* Second piece in all representations 
@@ -439,14 +441,16 @@ let pieces_to_string_file (pieces: string list list) =
 (*
 let empty_board: string list list = [["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"]];;
 *)
-let empty_board: string list list = [["R";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"Y"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["G";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"B"]];;
-
-let empty_board2: string list list = [["R";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"Y"];["-";"-";"1";"1";"1";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"2";"2";"2";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"3";"3";"3";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["G";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"B"]];;
+let empty_board: string list list = [["R";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"G";"Y"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"G";"G"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["G";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"B"]];;
 
 
 let empty_board_numbered: string list list = [["1";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["2";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["3";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["4";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["5";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["6";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["7";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["8";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["9";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["10";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["11";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["12";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["13";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["14";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["15";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["16";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["17";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["18";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["19";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["20";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"]];;
 
+(*
 let num_list: string list = ["1"; "2"; "3"; "4"; "5"; "6"; "7"; "8"; "9"; "10"; "11"; "12"; "13"; "14"; "15"; "16"; "17"; "18"; "19"; "20"; "21"];;
+*)
+
+let num_list: string list = ["4"];;
 
 
 
@@ -556,35 +560,18 @@ let rec trim_section (sub_board: string list list) (piece: string list list) (co
 let board_section_to_place (piece: string list list) (board: string list list) (coord: string) : string list list =
   trim_section (subset board (coord_row coord) ((-1) + (coord_row coord) + List.length piece)) piece coord 0;;
 
-(*
-let rec test_valid_placement_helper (sub_board: string list list) (piece: string list list) (row: int) (col: int) (color: string) (same: bool): bool =
-  if (row < List.length (List.nth_exn sub_board 0)) then
-    if String.equal (List.nth_exn (List.nth_exn sub_board row) col) "-" then test_valid_placement_helper sub_board piece (row + 1) col color same
-    else if String.equal (List.nth_exn (List.nth_exn piece row) col) "X" then test_valid_placement_helper sub_board piece (row + 1) col color same
-    else if String.equal (List.nth_exn (List.nth_exn sub_board row) col) color then 
-      if same then false
-      else test_valid_placement_helper sub_board piece (row + 1) col color true
-    else false
-  else if (col < List.length sub_board) then
-    if String.equal (List.nth_exn (List.nth_exn sub_board row) col) "-" then test_valid_placement_helper sub_board piece row (col + 1) color same
-    else if String.equal (List.nth_exn (List.nth_exn piece row) col) "X" then test_valid_placement_helper sub_board piece row (col + 1)color same
-    else if String.equal (List.nth_exn (List.nth_exn sub_board row) col) color then 
-      if same then false
-      else test_valid_placement_helper sub_board piece row (col + 1) color true
-    else false
-  else true;;
-  *)
-
-  let rec test_valid_placement_helper (sub_board: string list list) (piece: string list list) (index: int) (color: string) (same: bool): bool =
-    let col = index % (List.length (List.nth_exn sub_board 0)) in
-      let row = index / (List.length (List.nth_exn sub_board 0)) in
-        if index = ((List.length (List.nth_exn sub_board 0)) * (List.length sub_board)) then true
-        else if String.equal (List.nth_exn (List.nth_exn sub_board row) col) "-" then test_valid_placement_helper sub_board piece (index + 1) color same
-        else if String.equal (List.nth_exn (List.nth_exn piece row) col) "X" then test_valid_placement_helper sub_board piece (index + 1) color same
-        else if String.equal (List.nth_exn (List.nth_exn sub_board row) col) color then 
-          if same then false
-          else test_valid_placement_helper sub_board piece (index + 1) color true
-        else false;;
+let rec test_valid_placement_helper (sub_board: string list list) (piece: string list list) (index: int) (color: string) (same: bool): bool =
+  if (List.length sub_board) = 0 then true
+  else
+  let col = index % (List.length (List.nth_exn sub_board 0)) in
+    let row = index / (List.length (List.nth_exn sub_board 0)) in
+      if index = ((List.length (List.nth_exn sub_board 0)) * (List.length sub_board)) then true && same
+      else if String.equal (List.nth_exn (List.nth_exn sub_board row) col) "-" then test_valid_placement_helper sub_board piece (index + 1) color same
+      else if String.equal (List.nth_exn (List.nth_exn piece row) col) "X" then test_valid_placement_helper sub_board piece (index + 1) color same
+      else if String.equal (List.nth_exn (List.nth_exn sub_board row) col) color then 
+        if same then false
+        else test_valid_placement_helper sub_board piece (index + 1) color true
+      else false;;
 
 
 
@@ -597,9 +584,65 @@ let try_put_piece_on_board (piece: string list list) (board: string list list) (
    else if (coord_row coord < 0) then false
    else if ((coord_col coord) + (List.length (List.nth_exn piece 0)) - 1 > 19) then false
    else if ((coord_row coord) + (List.length piece) - 1 > 19) then false
-   else if List.length board = 100 then true
-   else if String.length color = 100 then true
    else test_valid_placement (board_section_to_place piece board coord) piece color;;
+
+let col_row_to_coord (col: int) (row: int) : string =
+  (String.make 1 (char_of_int (col + 65))) ^ (string_of_int (row + 1));;
+
+let rec get_pieces_test_helper (curr: int) (hand: string list) : string list list list list =
+  if (curr = List.length piecesStrings) then []
+  else if (curr = List.length hand) then []
+  else List.nth_exn pieces (int_of_string (List.nth_exn hand curr)) :: get_pieces_test_helper (curr + 1) hand;;
+
+let get_pieces_test  (color: string) (data: string list list) : string list list list list =
+  if (String.equal color "R") then get_pieces_test_helper 0 (List.nth_exn data 0)
+  else if (String.equal color "Y") then get_pieces_test_helper 0 (List.nth_exn data 1)
+  else if (String.equal color "B") then get_pieces_test_helper 0 (List.nth_exn data 2)
+  else if (String.equal color "G") then get_pieces_test_helper 0 (List.nth_exn data 3)
+  else [[[["\n     ERROR!\n"]]]];;
+
+let rec test_piece_rep_possible_move_helper (board: string list list) (piece: string list list) (index: int) (color: string): bool =
+  let col = index % (List.length (List.nth_exn board 0)) in
+  let row = index / (List.length (List.nth_exn board 0)) in
+    print_endline ("Testing piece\n" ^ (board_to_string_file piece) ^ "Test valid placement bool: " ^ (string_of_bool (test_valid_placement (board_section_to_place piece board (col_row_to_coord col row)) piece color)) ^ "\n" ^ "Coord: " ^ (col_row_to_coord col row) ^"\nColor: " ^ color ^ "\nIndex: " ^ (string_of_int index) ^ "\nSize of board: " ^ (string_of_int ((List.length (List.nth_exn board 0)) * (List.length board))) ^ "\nCol:" ^ (string_of_int col) ^ "\nRow:" ^ (string_of_int row) ^ "\nBool: " ^ (string_of_bool (index = ((List.length (List.nth_exn board 0)) * (List.length board)))) ^ "\n" ^ "Try put piece bool: " ^ (string_of_bool (try_put_piece_on_board piece board (col_row_to_coord col row) color)) ^ "\n");
+    if index = ((List.length (List.nth_exn board 0)) * (List.length board)) then false
+    else if try_put_piece_on_board piece board (col_row_to_coord col row) color then true
+    else test_piece_rep_possible_move_helper board piece (index + 1) color;;
+
+let test_piece_rep_possible_move (board: string list list) (piece: string list list) (color: string) : bool =
+  test_piece_rep_possible_move_helper board piece 0 color;;
+
+let rec test_piece_possible_move_helper (board: string list list) (piece: string list list list) (color: string) (counter: int) : bool =
+  if counter = (List.length piece) then true
+  else test_piece_rep_possible_move board (List.nth_exn piece counter) color && test_piece_possible_move_helper board piece color (counter + 1);;
+
+let test_piece_possible_move (board: string list list) (piece: string list list list) (color: string) : bool =
+  test_piece_possible_move_helper board piece color 0;;
+
+let rec test_all_possible_moves_helper (board: string list list) (pieces: string list list list list) (color: string) (counter: int) : bool =
+  if counter = (List.length pieces) then true
+  else test_piece_possible_move board (List.nth_exn pieces counter) color && test_all_possible_moves_helper board pieces color (counter + 1);;
+
+let test_all_possible_moves (board: string list list) (color: string) (data: string list list) : bool =
+  test_all_possible_moves_helper board (get_pieces_test color data) color 0;;
+
+
+let skip_player (color: string) (data: string list list) : string list list =
+  if (String.equal color "R") then ["NO MORE POSSIBLE MOVES"]  :: (List.nth_exn data 1) :: (List.nth_exn data 2) :: (List.nth_exn data 3) :: (List.nth_exn data 4) :: [[(next_color color)]]
+  else if (String.equal color "Y") then (List.nth_exn data 0) :: ["NO MORE POSSIBLE MOVES"] :: (List.nth_exn data 2) :: (List.nth_exn data 3) :: (List.nth_exn data 4) :: [[(next_color color)]]
+  else if (String.equal color "B") then (List.nth_exn data 0) :: (List.nth_exn data 1) :: ["NO MORE POSSIBLE MOVES"] :: (List.nth_exn data 3) :: (List.nth_exn data 4) :: [[(next_color color)]]
+  else if (String.equal color "G") then (List.nth_exn data 0) :: (List.nth_exn data 1) :: (List.nth_exn data 2) :: ["NO MORE POSSIBLE MOVES"] :: (List.nth_exn data 4) :: [[(next_color color)]]
+  else [["\n     ERROR!\n"]];;
+
+
+let skip_turn (pair: (string list list * string list list)): (string list list * string list list) = 
+  ((skip_player ((List.nth_exn (List.nth_exn (get_first pair) 5) 0)) (get_first pair)), get_second pair);;
+
+
+let check_next_player (loaded: (string list list * string list list)) : (string list list * string list list) =
+  print_endline (string_of_bool (test_all_possible_moves (get_second loaded) (List.nth_exn (List.nth_exn (get_first loaded) 5) 0) (get_first loaded)));
+  if (test_all_possible_moves (get_second loaded) (List.nth_exn (List.nth_exn (get_first loaded) 5) 0) (get_first loaded)) then loaded
+  else (skip_turn loaded);;
 
 (* Play the piece selected in the third element of the tuple
    Playing the piece entails playing the updating the 

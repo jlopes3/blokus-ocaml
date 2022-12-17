@@ -76,7 +76,7 @@ let command_args = Array.to_list (Sys.get_argv ());;
 let not_init =
   if (List.length command_args < 4) then print_string ""
   else 
-    let new_state = process_command_line load_game (command_args) |> play_piece in
+    let new_state = process_command_line load_game (command_args) |> play_piece |> check_next_player in
      write_game new_state;
      print_state new_state;;
 
