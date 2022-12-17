@@ -37,7 +37,9 @@ let load_game =
 
 
 
-
+let game_over_string (over: bool) (pair:(string list list * string list list)): string =
+  if over then (board_to_string_file (get_first pair))
+  else ((pieces_to_string_file (subset (get_first pair) 0 3)) ^ (ai_string (string_of_int (List.length (List.nth_exn (get_first pair) 4)))) ^ "      " ^ (List.nth_exn (List.nth_exn (get_first pair) 5) 0) ^ "\n"^ (board_to_string_file (get_second pair)));;
 
 
 (* Write the new state of the game to state.txt
@@ -58,7 +60,7 @@ let load_game =
 *)  
 let write_game (pair:(string list list * string list list)) =
   let oc = Out_channel.create "state.txt" in
-  Out_channel.output_string oc ((pieces_to_string_file (subset (get_first pair) 0 3)) ^ (ai_string (string_of_int (List.length (List.nth_exn (get_first pair) 4)))) ^ "      " ^ (List.nth_exn (List.nth_exn (get_first pair) 5) 0) ^ "\n"^ (board_to_string_file (get_second pair)));
+  Out_channel.output_string oc (game_over_string (check_game_over pair) pair);
   Out_channel.flush oc;;
 
 

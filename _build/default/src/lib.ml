@@ -410,6 +410,7 @@ let pieces: string list list list list = [[[["Placeholder"]]];piece1;piece2;piec
 (* List of string representation of all pieces *)
 let piecesStrings: string list = ["Placeholder";piece1String;piece2String;piece3String;piece4String;piece5String;piece6String;piece7String;piece8String;piece9String;piece10String;piece11String;piece12String;piece13String;piece14String;piece15String;piece16String;piece17String;piece18String;piece19String;piece20String;piece21String];;
 
+let piecesScore: int list = [0;1;2;3;3;4;4;4;4;4;5;5;5;5;5;5;5;5;5;5;5;5];;
 
 
 
@@ -450,7 +451,7 @@ let empty_board_numbered: string list list = [["1";"X";"X";"X";"X";"X";"X";"X";"
 let num_list: string list = ["1"; "2"; "3"; "4"; "5"; "6"; "7"; "8"; "9"; "10"; "11"; "12"; "13"; "14"; "15"; "16"; "17"; "18"; "19"; "20"; "21"];;
 *)
 
-let num_list: string list = ["4"];;
+let num_list: string list = ["4"; "5"];;
 
 
 
@@ -509,7 +510,9 @@ let rec remove_piece_helper (data: string list) (to_remove: string) (curr: int) 
 
 
 let remove_piece (data: string list) (to_remove: string): string list =
-  remove_piece_helper data to_remove 0;;
+  if (List.length (remove_piece_helper data to_remove 0)) = 0 then ["0"; "0"]
+  else (remove_piece_helper data to_remove 0);;   
+
 
 let next_color (color: string) : string =
   if (String.equal color "R") then "Y"
@@ -604,7 +607,6 @@ let get_pieces_test  (color: string) (data: string list list) : string list list
 let rec test_piece_rep_possible_move_helper (board: string list list) (piece: string list list) (index: int) (color: string): bool =
   let col = index % (List.length (List.nth_exn board 0)) in
   let row = index / (List.length (List.nth_exn board 0)) in
-    print_endline ("Testing piece\n" ^ (board_to_string_file piece) ^ "Test valid placement bool: " ^ (string_of_bool (test_valid_placement (board_section_to_place piece board (col_row_to_coord col row)) piece color)) ^ "\n" ^ "Coord: " ^ (col_row_to_coord col row) ^"\nColor: " ^ color ^ "\nIndex: " ^ (string_of_int index) ^ "\nSize of board: " ^ (string_of_int ((List.length (List.nth_exn board 0)) * (List.length board))) ^ "\nCol:" ^ (string_of_int col) ^ "\nRow:" ^ (string_of_int row) ^ "\nBool: " ^ (string_of_bool (index = ((List.length (List.nth_exn board 0)) * (List.length board)))) ^ "\n" ^ "Try put piece bool: " ^ (string_of_bool (try_put_piece_on_board piece board (col_row_to_coord col row) color)) ^ "\n");
     if index = ((List.length (List.nth_exn board 0)) * (List.length board)) then false
     else if try_put_piece_on_board piece board (col_row_to_coord col row) color then true
     else test_piece_rep_possible_move_helper board piece (index + 1) color;;
@@ -626,12 +628,20 @@ let rec test_all_possible_moves_helper (board: string list list) (pieces: string
 let test_all_possible_moves (board: string list list) (color: string) (data: string list list) : bool =
   test_all_possible_moves_helper board (get_pieces_test color data) color 0;;
 
+let rec player_score_helper (hand: string list) (curr: int) : int =
+  if (curr = List.length piecesStrings) then 0
+  else if (curr = List.length hand) then 0
+  else (List.nth_exn piecesScore (int_of_string (List.nth_exn hand curr))) + (player_score_helper hand (curr + 1));;
+
+let player_score (hand: string list) : string =
+  string_of_int (player_score_helper hand 0);;
+
 
 let skip_player (color: string) (data: string list list) : string list list =
-  if (String.equal color "R") then ["NO MORE POSSIBLE MOVES"]  :: (List.nth_exn data 1) :: (List.nth_exn data 2) :: (List.nth_exn data 3) :: (List.nth_exn data 4) :: [[(next_color color)]]
-  else if (String.equal color "Y") then (List.nth_exn data 0) :: ["NO MORE POSSIBLE MOVES"] :: (List.nth_exn data 2) :: (List.nth_exn data 3) :: (List.nth_exn data 4) :: [[(next_color color)]]
-  else if (String.equal color "B") then (List.nth_exn data 0) :: (List.nth_exn data 1) :: ["NO MORE POSSIBLE MOVES"] :: (List.nth_exn data 3) :: (List.nth_exn data 4) :: [[(next_color color)]]
-  else if (String.equal color "G") then (List.nth_exn data 0) :: (List.nth_exn data 1) :: (List.nth_exn data 2) :: ["NO MORE POSSIBLE MOVES"] :: (List.nth_exn data 4) :: [[(next_color color)]]
+  if (String.equal color "R") then ["0"; player_score (List.nth_exn data 0)]  :: (List.nth_exn data 1) :: (List.nth_exn data 2) :: (List.nth_exn data 3) :: (List.nth_exn data 4) :: [[(next_color color)]]
+  else if (String.equal color "Y") then (List.nth_exn data 0) :: ["0"; player_score (List.nth_exn data 1)] :: (List.nth_exn data 2) :: (List.nth_exn data 3) :: (List.nth_exn data 4) :: [[(next_color color)]]
+  else if (String.equal color "B") then (List.nth_exn data 0) :: (List.nth_exn data 1) :: ["0"; player_score (List.nth_exn data 2)] :: (List.nth_exn data 3) :: (List.nth_exn data 4) :: [[(next_color color)]]
+  else if (String.equal color "G") then (List.nth_exn data 0) :: (List.nth_exn data 1) :: (List.nth_exn data 2) :: ["0"; player_score (List.nth_exn data 3)] :: (List.nth_exn data 4) :: [[(next_color color)]]
   else [["\n     ERROR!\n"]];;
 
 
@@ -639,9 +649,32 @@ let skip_turn (pair: (string list list * string list list)): (string list list *
   ((skip_player ((List.nth_exn (List.nth_exn (get_first pair) 5) 0)) (get_first pair)), get_second pair);;
 
 
+let game_over_data (data: string list list): string list list =
+  data @ [["GAME OVER!"]];;
+
+let game_over (loaded: (string list list * string list list)): (string list list * string list list) =
+  (game_over_data (get_first loaded), get_second loaded);;
+
+let check_for_0  (color: string) (data: string list list) : bool =
+  if (String.equal color "R") then String.equal "0" (List.nth_exn(List.nth_exn data 0) 0)
+  else if (String.equal color "Y") then String.equal "0" (List.nth_exn(List.nth_exn data 1) 0)
+  else if (String.equal color "B") then String.equal "0" (List.nth_exn(List.nth_exn data 2) 0)
+  else if (String.equal color "G") then String.equal "0" (List.nth_exn(List.nth_exn data 3) 0)
+  else true;;
+
+let check_next_player_done (loaded: (string list list * string list list)): bool =
+  let data = get_first loaded in
+    let color = (List.nth_exn (List.nth_exn data 5) 0) in
+      check_for_0 color data;;
+
+let check_game_over (loaded: (string list list * string list list)): bool =
+  check_for_0 "R" (get_first loaded) && check_for_0 "Y" (get_first loaded) && check_for_0 "B" (get_first loaded) && check_for_0 "G" (get_first loaded);;
+
 let check_next_player (loaded: (string list list * string list list)) : (string list list * string list list) =
-  print_endline (string_of_bool (test_all_possible_moves (get_second loaded) (List.nth_exn (List.nth_exn (get_first loaded) 5) 0) (get_first loaded)));
-  if (test_all_possible_moves (get_second loaded) (List.nth_exn (List.nth_exn (get_first loaded) 5) 0) (get_first loaded)) then loaded
+  print_endline ("\nChecking game over: " ^ string_of_bool(check_game_over loaded) ^ "\n");
+  if check_game_over loaded then (game_over loaded)
+  else if (check_next_player_done loaded) then (skip_turn loaded)
+  else if (test_all_possible_moves (get_second loaded) (List.nth_exn (List.nth_exn (get_first loaded) 5) 0) (get_first loaded)) then loaded
   else (skip_turn loaded);;
 
 (* Play the piece selected in the third element of the tuple
@@ -686,4 +719,5 @@ let player_string (data: string list list): string =
   This first prints the board, then whose turn it is, then the pieces of the current playeer
 *)  
 let print_state (loaded: (string list list * string list list)) =
-  print_endline (board_to_string_stdio (get_second loaded) ^ player_string (get_first loaded));;
+  if (check_game_over loaded) then print_endline (board_to_string_stdio (get_second loaded) ^ "\nGame is over!\n")
+  else print_endline (board_to_string_stdio (get_second loaded) ^ player_string (get_first loaded));;
