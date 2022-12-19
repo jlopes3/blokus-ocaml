@@ -7,5 +7,6 @@
     ppx_deriving_yojson
     ounit2
     lib
+    constants
   )
   )

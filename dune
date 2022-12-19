@@ -3,6 +3,7 @@
   (deps 
     src/lib.ml
     src/blokus.ml
+    src/constants.ml
     src/dune
     tests/tests.ml
     tests/dune

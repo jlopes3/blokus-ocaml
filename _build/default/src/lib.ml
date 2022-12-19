@@ -1,5 +1,5 @@
 open Core
-
+open Constants
 
 let get_first (pair: 'a * 'b): 'a =
   let (r1, _) = pair in
@@ -24,398 +24,6 @@ let get_trio_third (trio: 'a * 'b * 'c): 'c =
     r3;;
 
 
-(* First piece in all representations 
-   
-  First representation: P P P
-                        P P P
-                        P P P 
-  *)
-  let piece1: string list list list = [[["P";"P";"P"];["P";"P";"P"];["P";"P";"P"]]];;
-  let piece1String: string ="     Piece 1:\n     PPP\n     PPP\n     PPP\n";;
-
-
-(* Second piece in all representations 
-   
-  First representation: P P    
-  Second representation: P
-                         P
-*)
-let piece2: string list list list = [[["P";"P"]];  [["P"];["P"]]];;
-let piece2String: string ="     Piece 2:\n     PP  P\n         P\n";;
-
-(* Third piece in all representations 
-   
-  Representation 1: X P
-                    P P   
-  Representation 2: P X
-                    P P
-  Representation 3: P P
-                    P X 
-  Representation 1: P P
-                    X P 
-                    let piece3: string list list list = [[["X";"P"];["P";"P"]];  [["P";"X"];["P";"P"]];  [["P";"P"];["P";"X"]];  [["P";"P"];["X";"P"]]];;
-*)
-let piece3: string list list list = [[["X";"P"];["P";"P"]];  [["P";"X"];["P";"P"]];  [["P";"P"];["P";"X"]];  [["P";"P"];["X";"P"]]];;
-let piece3String: string ="     Piece 3:\n      P P  PP PP\n     PP PP P   P\n";;
-
-(* Fourth piece in all representations 
-   
-  Representation 1: P P P P   
-  Representation 2: P
-                    P
-                    P
-                    P
-*)
-let piece4: string list list list = [[["P";"P";"P"]];  [["P"];["P"];["P"]]];;
-let piece4String: string ="     Piece 4:\n     PPP  P\n          P\n          P\n";;
-
-(* Fourth piece in all representations 
-   
-  Representation 1: P P P P   
-  Representation 2: P
-                    P
-                    P
-                    P
-*)
-let piece5: string list list list = [[["P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"]]];;
-let piece5String: string ="     Piece 5:\n     PPPP  P\n           P\n           P\n           P\n";;
-
-(* Sixth piece in all representations 
-   
-  Representation 1: X X P
-                    P P P   
-  Representation 2: P X
-                    P X
-                    P P
-  Representation 3: P P P
-                    P X X
-  Representation 4: P P
-                    X P
-                    X P
-  Representation 5: P X X
-                    P P P   
-  Representation 6: X P
-                    X P
-                    P P
-  Representation 7: P P P
-                    X X P
-  Representation 8: P P
-                    P X
-                    P X
-*)
-let piece6: string list list list = [[["X";"X";"P"];["P";"P";"P"]];   [["P";"X"];["P";"X"];["P";"P"]];     [["P";"P";"P"];["P";"X";"X"]];        [["P";"P"];["X";"P"];["X";"P"]];         [["P";"X";"X"];["P";"P";"P"]];         [["X";"P"];["X";"P"];["P";"P"]];          [["P";"P";"P"];["X";"X";"P"]];           [["P";"P"];["P";"X"];["P";"X"]]    ];;
-let piece6String: string ="     Piece 6:\n       P P  PPP PP P    P PPP PP\n     PPP P  P    P PPP  P   P P \n         PP      P     PP     P\n";;
-
-
-(* Seventh piece in all representations 
-  Representation 1: P P X
-                    X P P   
-  Representation 2: X P P
-                    P P X 
-  Representation 3: X P
-                    P P
-                    P X
-  Representation 4: P X
-                    P P
-                    X P
-*)
-let piece7: string list list list = [[["P";"P";"X"];["X";"P";"P"]];  [["X";"P";"P"];["P";"P";"X"]];   [["X";"P"];["P";"P"];["P";"X"]];    [["P";"X"];["P";"P"];["X";"P"]] ];;
-let piece7String: string ="     Piece 7:\n     PP   PP  P P  \n      PP PP  PP PP \n             P   P \n";;
-
-
-(* Eighth piece in all representations 
-  Representation 1: P P
-                    P P   
-*)
-let piece8: string list list list = [[["P";"P"];["P";"P"]]];;
-let piece8String: string ="     Piece 8:\n     PP\n     PP\n";;
-
-(* Ninth piece in all representations 
-  Representation 1: P P P
-                    X P X   
-  Representation 2: X P X
-                    P P P 
-  Representation 3: X P
-                    P P
-                    X P
-  Representation 4: P X
-                    P P
-                    P X
-*)
-let piece9: string list list list = [[["P";"P";"P"];["X";"P";"X"]];  [["X";"P";"X"];["P";"P";"P"]];   [["X";"P"];["P";"P"];["X";"P"]];    [["P";"X"];["P";"P"];["P";"X"]] ];;
-let piece9String: string ="     Piece 9:\n     PPP  P   P P  \n      P  PPP PP PP \n              P P \n";;
-
-
-(* Tenth piece in all representations 
-   
-  Representation 1: X P P
-                    P P X   
-                    X P X
-  Representation 2: X P X
-                    P P P
-                    X X P
-  Representation 3: X P X
-                    X P P
-                    P P X
-  Representation 4: P X X
-                    P P P
-                    X P X
-  Representation 5: P P X
-                    X P P   
-                    X P X
-  Representation 6: X P X
-                    P P P
-                    P X X
-  Representation 7: X P X
-                    P P X
-                    X P P
-  Representation 8: X X P
-                    P P P
-                    X P X
-*)
-let piece10: string list list list = [[["X";"P";"P"];["P";"P";"X"];["X";"P";"X"]];     [["X";"P";"X"];["P";"P";"P"];["X";"X";"P"]];     [["X";"P";"X"];["X";"P";"P"];["P";"P";"X"]];     [["P";"X";"X"];["P";"P";"P"];["X";"P";"X"]];     [["P";"P";"X"];["X";"P";"P"];["X";"P";"X"]];     [["X";"P";"X"];["P";"P";"P"];["P";"X";"X"]];        [["X";"P";"X"];["P";"P";"X"];["X";"P";"P"]];        [["X";"X";"P"];["P";"P";"P"];["X";"P";"X"]]  ];;
-let piece10String: string ="     Piece 10:\n      PP  P   P  P   PP   P   P    P\n     PP  PPP  PP PPP  PP PPP PP  PPP\n      P    P PP   P   P  P    PP  P \n";;
-
-
-(* Eleventh piece in all representations 
-   
-  Representation 1: P P P P P  
-  Representation 2: P
-                    P
-                    P
-                    P
-                    P
-*)
-let piece11: string list list list = [[["P";"P";"P";"P";"P"]];  [["P"];["P"];["P"];["P"];["P"]]];;
-let piece11String: string ="     Piece 11:\n     PPPPP  P\n            P\n            P\n            P\n            P\n";;
-
-
-(* Twelfth piece in all representations 
-   
-  Representation 1: P X
-                    P X
-                    P X  
-                    P P
-  Representation 2: P P P P
-                    P X X X
-  Representation 3: P P
-                    X P 
-                    X P
-                    X P  
-  Representation 4: X X X P
-                    P P P P
-  Representation 5: X P   
-                    X P
-                    X P
-                    P P
-  Representation 6: P P P P
-                    X X X P
-  Representation 7: P P
-                    P X   
-                    P X
-                    P X
-  Representation 8: P X X X
-                    P P P P
-*)
-let piece12: string list list list = [[["P";"X"];["P";"X"];["P";"X"];["P";"P"]];  [["P";"P";"P";"P"];["P";"X";"X";"X"]];     [["P";"P"];["X";"P"];["X";"P"];["X";"P"]];       [["X";"X";"X";"P"];["P";"P";"P";"P"]];      [["X";"P"];["X";"P"];["X";"P"];["P";"P"]];       [["P";"P";"P";"P"];["X";"X";"X";"P"]];         [["P";"P"];["P";"X"];["P";"X"];["P";"X"]];                [["P";"X";"X";"X"];["P";"P";"P";"P"]]];;
-let piece12String: string ="     Piece 12:\n     P  PPPP PP    P  P PPPP PP P\n     P  P     P PPPP  P    P P  PPPP\n     P        P       P      P      \n     PP       P      PP      P      \n";;
-
-
-(* Thirteenth piece in all representations 
-   
-  Representation 1: X P
-                    P P
-                    P X  
-                    P X
-  Representation 2: P P P X
-                    X X P P
-  Representation 3: X P
-                    X P 
-                    P P
-                    P X  
-  Representation 4: P P X X
-                    X P P P
-  Representation 5: P X   
-                    P P
-                    X P
-                    X P
-  Representation 6: X P P P
-                    P P X X
-  Representation 7: P X
-                    P X   
-                    P P
-                    X P
-  Representation 8: X X P P
-                    P P P X
-*)
-let piece13: string list list list = [[["X";"P"];["P";"P"];["P";"X"];["P";"X"]];  [["P";"P";"P";"X"];["X";"X";"P";"P"]];     [["X";"P"];["X";"P"];["P";"P"];["P";"X"]];       [["P";"P";"X";"X"];["X";"P";"P";"P"]];      [["P";"X"];["P";"P"];["X";"P"];["X";"P"]];       [["X";"P";"P";"P"];["P";"P";"X";"X"]];         [["P";"X"];["P";"X"];["P";"P"];["X";"P"]];                [["X";"X";"P";"P"];["P";"P";"P";"X"]]];;
-let piece13String: string ="     Piece 13:\n      P PPP   P PP   P   PPP P    PP\n     PP   PP  P  PPP PP PP   P  PPP \n     P       PP       P      PP     \n     P       P        P       P      \n";;
-
-(* Thirteenth piece in all representations 
-   
-  Representation 1: P P
-                    P P
-                    P X  
-  Representation 2: P P P
-                    X P P
-  Representation 3: X P
-                    P P 
-                    P P
-  Representation 4: P P X
-                    P P P
-  Representation 5: P P   
-                    P P
-                    X P
-  Representation 6: P P P
-                    P P X
-  Representation 7: P X
-                    P P   
-                    P P
-  Representation 8: X P P
-                    P P P
-*)
-let piece14: string list list list = [ [["P";"P"];["P";"P"];["P";"X"]];     [["P";"P";"P"];["X";"P";"P"]];       [["X";"P"];["P";"P"];["P";"P"]];     [["P";"P";"X"];["P";"P";"P"]];        [["P";"P"];["P";"P"];["X";"P"]];     [["P";"P";"P"];["P";"P";"X"]];      [["P";"X"];["P";"P"];["P";"P"]];     [["X";"P";"P"];["P";"P";"P"]]];;
-let piece14String: string ="     Piece 14:\n     PP PPP  P PP  PP PPP P   PP\n     PP  PP PP PPP PP PP  PP PPP\n     P      PP      P     PP    \n";;
-
-(* Fifteenth piece in all representations 
-   
-  Representation 1: P P P
-                    X P X   
-                    X P X
-  Representation 2: X X P
-                    P P P
-                    X X P
-  Representation 3: X P X
-                    X P X
-                    P P P
-  Representation 4: P X X
-                    P P P
-                    P X X
-*)
-let piece15: string list list list = [[["P";"P";"P"];["X";"P";"X"];["X";"P";"X"]];   [["X";"X";"P"];["P";"P";"P"];["X";"X";"P"]];        [["X";"P";"X"];["X";"P";"X"];["P";"P";"P"]];        [["P";"X";"X"];["P";"P";"P"];["P";"X";"X"]]  ];;
-let piece15String: string ="     Piece 15:\n     PPP   P  P  P  \n      P  PPP  P  PPP\n      P    P PPP P\n";;
-
-(* Sixteenth piece in all representations 
-   
-  Representation 1: P X P
-                    P P P   
-  Representation 2: P P
-                    P X
-                    P P
-  Representation 3: P P P
-                    P X P
-  Representation 4: P P
-                    X P
-                    P P
-*)
-let piece16: string list list list = [[["P";"X";"P"];["P";"P";"P"]];   [["P";"P"];["P";"X"];["P";"P"]];        [["P";"P";"P"];["P";"X";"P"]];        [["P";"P"];["X";"P"];["P";"P"]]  ];;
-let piece16String: string ="     Piece 16:\n     P P PP PPP PP \n     PPP P  P P  P \n         PP     PP \n";;
-
-(* Seventeenth piece in all representations 
-   
-  Representation 1: P X X
-                    P X X 
-                    P P P
-  Representation 2: P P P
-                    P X X
-                    P X X
-  Representation 3: P P P
-                    X X P
-                    X X P
-  Representation 4: X X P
-                    X X P
-                    P P P
-*)
-let piece17: string list list list = [[["P";"X";"X"];["P";"X";"X"];["P";"P";"P"]];   [["P";"P";"P"];["P";"X";"X"];["P";"X";"X"]];        [["P";"P";"P"];["X";"X";"P"];["X";"X";"P"]];        [["X";"X";"P"];["X";"X";"P"];["P";"P";"P"]]  ];;
-let piece17String: string ="     Piece 17:\n     P   PPP PPP   P \n     P   P     P   P \n     PPP P     P PPP\n";;
-
-(* Eighteenth piece in all representations 
-   
-  Representation 1: P X X
-                    P P X 
-                    X P P
-  Representation 2: X P P
-                    P P X
-                    P X X
-  Representation 3: P P X
-                    X P P
-                    X X P
-  Representation 4: X X P
-                    X P P
-                    P P X
-*)
-let piece18: string list list list = [[["P";"X";"X"];["P";"P";"X"];["X";"P";"P"]];   [["X";"P";"P"];["P";"P";"X"];["P";"X";"X"]];        [["P";"P";"X"];["X";"P";"P"];["X";"X";"P"]];        [["X";"X";"P"];["X";"P";"P"];["P";"P";"X"]]  ];;
-let piece18String: string ="     Piece 18:\n     P    PP PP    P \n     PP  PP   PP  PP \n      PP P     P PP \n";;
-
-(* Ninteenth piece in all representations 
-   
-  Representation 1: X P X
-                    P P P 
-                    X P X
-*)
-let piece19: string list list list = [[["X";"P";"X"];["P";"P";"P"];["X";"P";"X"]]];;
-let piece19String: string ="     Piece 19:\n      P \n     PPP\n      P \n";;
-
-(* Twentieth piece in all representations 
-   
-  Representation 1: X P
-                    P P
-                    X P
-                    X P 
-  Representation 2: X X P X
-                    P P P P
-  Representation 3: P X
-                    P X 
-                    P P
-                    P X
-  Representation 4: P P P P
-                    X P X X
-  Representation 5: P X  
-                    P P
-                    P X
-                    P X
-  Representation 6: X P X X
-                    P P P P
-  Representation 7: X P
-                    X P   
-                    P P
-                    X P
-  Representation 8: P P P P
-                    X X P X
-*)
-let piece20: string list list list = [[["X";"P"];["P";"P"];["X";"P"];["X";"P"]];        [["X";"X";"P";"X"];["P";"P";"P";"P"]];             [["P";"X"];["P";"X"];["P";"P"];["P";"X"]];        [["P";"P";"P";"P"];["X";"P";"X";"X"]];        [["P";"X"];["P";"P"];["P";"X"];["P";"X"]];        [["X";"P";"X";"X"];["P";"P";"P";"P"]];        [["X";"P"];["X";"P"];["P";"P"];["X";"P"]];        [["P";"P";"P";"P"];["X";"X";"P";"X"]]     ];;
-let piece20String: string ="     Piece 20:\n      P   P  P  PPPP P   P    P PPPP\n     PP PPPP P   P   PP PPPP  P   P\n      P      PP      P       PP\n      P      P       P        P\n";;
-
-
-(* Twenty-first piece in all representations 
-   
-  Representation 1: P P X
-                    X P X 
-                    X P P
-  Representation 2: X X P
-                    P P P
-                    P X X
-  Representation 3: X P P
-                    X P X
-                    P P X
-  Representation 4: P X X
-                    P P P
-                    X X P
-*)
-let piece21: string list list list = [[["P";"P";"X"];["X";"P";"X"];["X";"P";"P"]];   [["X";"X";"P"];["P";"P";"P"];["P";"X";"X"]];        [["X";"P";"P"];["X";"P";"X"];["P";"P";"X"]];        [["P";"X";"X"];["P";"P";"P"];["X";"X";"P"]]  ];;
-let piece21String: string ="     Piece 21:\n     PP    P  PP P\n      P  PPP  P  PPP\n      PP P   PP    P\n";;
-
-(* List of all pieces *)
-let pieces: string list list list list = [[[["Placeholder"]]];piece1;piece2;piece3;piece4;piece5;piece6;piece7;piece8;piece9;piece10;piece11;piece12;piece13;piece14;piece15;piece16;piece17;piece18;piece19;piece20;piece21]
-
-(* List of string representation of all pieces *)
-let piecesStrings: string list = ["Placeholder";piece1String;piece2String;piece3String;piece4String;piece5String;piece6String;piece7String;piece8String;piece9String;piece10String;piece11String;piece12String;piece13String;piece14String;piece15String;piece16String;piece17String;piece18String;piece19String;piece20String;piece21String];;
-
-let piecesScore: int list = [0;9;2;3;3;4;4;4;4;4;5;5;5;5;5;5;5;5;5;5;5;5];;
-
-
-
-
 (* All for converting a board to a string *)
 let remove_first_char (inputString: string): string =
   String.sub inputString ~pos:(1) ~len:(String.length inputString - 1);;
@@ -433,25 +41,11 @@ let board_to_string_stdio (board: string list list) =
   "\n       A  B  C  D  E  F  G  H  I  J  K  L  M  N  O  P  Q  R  S  T\n\n" ^ List.fold ~f:(^) ~init:("") (List.mapi ~f:(fun index -> fun a -> ((Int.to_string (index + 1)) ^ a)) (List.mapi ~f:(fun index -> fun a -> remove_double_digits (index + 1) a) (List.map ~f:(row_to_string) board)));;
 
 
-let board_to_string_file (board: string list list) = 
-  List.fold ~f:(^) ~init:("") (List.map ~f:(row_to_string) board);;
+let board_to_string_file (board_or_piece: string list list) = 
+  List.fold ~f:(^) ~init:("") (List.map ~f:(row_to_string) board_or_piece);;
 
 let pieces_to_string_file (pieces: string list list) = 
   List.fold ~f:(^) ~init:("") (List.map ~f:(row_to_string) pieces);;
-
-
-(*
-let empty_board: string list list = [["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"];["X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X";"X"]];;
-*)
-let empty_board: string list list = [["R";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"Y"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["G";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"B"]];;
-
-
-let num_list: string list = ["1"; "2"; "3"; "4"; "5"; "6"; "7"; "8"; "9"; "10"; "11"; "12"; "13"; "14"; "15"; "16"; "17"; "18"; "19"; "20"; "21"];;
-
-
-
-
-
 
 
 let ai_string (num_ai: string) : string =
@@ -607,20 +201,14 @@ let get_pieces_test  (color: string) (data: string list list) : string list list
 let rec test_piece_rep_possible_move_helper (board: string list list) (piece: string list list) (index: int) (color: string): bool =
   let col = index % (List.length (List.nth_exn board 0)) in
     let row = index / (List.length (List.nth_exn board 0)) in
-      print_endline ("\n" ^ board_to_string_file piece ^ "\n");
-      print_endline ("\n\n\nCol : " ^ string_of_int col ^"Row: " ^  string_of_int row ^ "\nIndex: " ^ string_of_int index);
       if index = ((List.length (List.nth_exn board 0)) * (List.length board)) then false
       else if try_put_piece_on_board piece board (col_row_to_coord col row) color then true
       else test_piece_rep_possible_move_helper board piece (index + 1) color;;
 
 let test_piece_rep_possible_move (board: string list list) (piece: string list list) (color: string) : bool =
-  print_endline ("Test piece rep possible move: " ^ string_of_bool (test_piece_rep_possible_move_helper board piece 0 color));
-  print_endline ("Piece: \n" ^ board_to_string_file piece);
   test_piece_rep_possible_move_helper board piece 0 color;;
 
 let rec test_piece_possible_move_helper (board: string list list) (piece: string list list list) (color: string) (counter: int) : bool =
-  print_endline ("Counter in test_piece_possible_move_helper: \n" ^ string_of_int counter);
-  print_endline ("List.length piece in test_piece_possible_move_helper: \n" ^ string_of_int (List.length piece));
   if counter = (List.length piece) then false
   else 
     test_piece_rep_possible_move board (List.nth_exn piece counter) color || test_piece_possible_move_helper board piece color (counter + 1);;
@@ -752,13 +340,26 @@ let play_piece (tuple: (string list list * string list list * string list)): (st
     (update_pieces (List.nth_exn (List.nth_exn (get_trio_first tuple) 5) 0) (get_trio_first tuple) (List.nth_exn (get_trio_third tuple) 0), (put_piece_on_board (List.nth_exn (List.nth_exn pieces (int_of_string (List.nth_exn (get_trio_third tuple) 0))) ((-1) + int_of_string (List.nth_exn (get_trio_third tuple) 1))) (get_trio_second tuple) (List.nth_exn (get_trio_third tuple) 2)   (List.nth_exn (List.nth_exn (get_trio_first tuple) 5) 0) ))
   else (get_trio_first tuple, get_trio_second tuple);;
 
+
+
+let random_to_front (info: 'a list) : 'a list =
+  let random_num = 1 + Random.int (-1 + List.length info) in
+    match List.split_n info random_num with
+    | (first, second) -> List.hd_exn (second) ::first @ (List.tl_exn second);;
+
+let rec shuffle (info: 'a list) (times: int) : 'a list =
+  if List.length info < 2 then info
+  else if (times > 0) then shuffle (random_to_front info) (times - 1)
+  else info;;
+
+
 let rec do_random_move_helper (possible_reps: (string * string) list) (loaded: (string list list * string list list)) (index: int) :  (string list list * string list list) =
   if index = List.length possible_reps then loaded
   else if check_possible_rep_valid (List.nth_exn possible_reps index) loaded then play_piece (get_first loaded, get_second loaded, [get_first (List.nth_exn possible_reps index); get_second (List.nth_exn possible_reps index); piece_rep_do_possible_move_coords (get_second loaded) (List.nth_exn (List.nth_exn pieces ((int_of_string (get_first (List.nth_exn possible_reps index))))) ((int_of_string (get_second (List.nth_exn possible_reps index))) - 1)) (List.nth_exn (List.nth_exn (get_first loaded) 5) 0)])
   else do_random_move_helper possible_reps loaded (index + 1);;
 
 let do_random_move (possible_reps: (string * string) list) (loaded: (string list list * string list list)) :  (string list list * string list list) =
-  do_random_move_helper possible_reps loaded 0;;
+  do_random_move_helper (shuffle possible_reps 100) loaded 0;;
 
 
 let ai_move (loaded: (string list list * string list list)) : (string list list * string list list) =
@@ -774,16 +375,23 @@ let not (bool1: bool) : bool =
   if bool1 then false
   else true;;
 
-(*
+let rec skip_turn_try_multiple (loaded: (string list list * string list list)) : (string list list * string list list) =
+  if check_next_player_done (skip_turn loaded) then skip_turn_try_multiple (skip_turn loaded)
+  else skip_turn loaded;;
+
 let check_next_player (loaded: (string list list * string list list)) : (string list list * string list list) =
-  print_endline ("Check game over bool: " ^ (string_of_bool (            (test_all_possible_moves (get_second loaded) (List.nth_exn (List.nth_exn (get_first loaded) 5) 0) (get_first loaded))           )));
+  (*
+  print_endline ("Check game over: " ^ string_of_bool(            check_game_over loaded         ));
+  print_endline ("Check next player: " ^ string_of_bool(            (check_next_player_done loaded)       ));
+  *)
   if check_game_over loaded then (game_over loaded)
-  else if (check_next_player_done loaded) then (skip_turn loaded)
+  else if (check_next_player_done loaded) then (skip_turn_try_multiple loaded)
   else if (test_all_possible_moves (get_second loaded) (List.nth_exn (List.nth_exn (get_first loaded) 5) 0) (get_first loaded)) then 
     if (check_ai (get_first loaded)) then ai_move_try_multiple loaded
     else loaded
   else (skip_turn loaded);;
-*)
+
+(*
 let check_next_player (loaded: (string list list * string list list)) : (string list list * string list list) =
   (*
   print_endline ("Data: " ^ board_to_string_file (get_first loaded));
@@ -798,6 +406,7 @@ let check_next_player (loaded: (string list list * string list list)) : (string 
   else if (check_next_player_done loaded) then (skip_turn loaded)
   else if (test_all_possible_moves (get_second loaded) (List.nth_exn (List.nth_exn (get_first loaded) 5) 0) (get_first loaded)) then loaded
   else (skip_turn loaded);;
+*)
 
 let intro_string (color: string) : string =
   if (String.equal color "R") then "\n     It is red's turn!\n     Here are your pieces:\n"
@@ -827,7 +436,7 @@ let player_string (data: string list list): string =
 
 
 let score_string (data: string list list) : string =
-  "\nRed score: " ^(List.nth_exn (List.nth_exn data 0) 1) ^ "\n" ^ "Yellow score: " ^(List.nth_exn (List.nth_exn data 1) 1) ^ "\n" ^ "Blue score: " ^(List.nth_exn (List.nth_exn data 0) 1) ^ "\n" ^ "Green score: " ^(List.nth_exn (List.nth_exn data 0) 1) ^ "\n";;
+  "\nRed score: " ^(List.nth_exn (List.nth_exn data 0) 1) ^ "\n" ^ "Yellow score: " ^(List.nth_exn (List.nth_exn data 1) 1) ^ "\n" ^ "Blue score: " ^(List.nth_exn (List.nth_exn data 2) 1) ^ "\n" ^ "Green score: " ^(List.nth_exn (List.nth_exn data 3) 1) ^ "\n";;
 
 (* Print the current state of the game in state.txt to stdio
   This first prints the board, then whose turn it is, then the pieces of the current playeer

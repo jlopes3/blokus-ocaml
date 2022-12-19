@@ -1,10 +1,22 @@
 (library
+  (name constants)
+  (modules constants)
+  (libraries 
+    core
+    ppx_deriving_yojson
+    core_unix.sys_unix
+    )
+    (preprocess (pps bisect_ppx ppx_jane ppx_deriving_yojson))
+    )
+
+(library
   (name lib)
   (modules lib)
   (libraries 
     core
     ppx_deriving_yojson
     core_unix.sys_unix
+    constants
     )
     (preprocess (pps bisect_ppx ppx_jane ppx_deriving_yojson))
     )
@@ -15,6 +27,7 @@
   (preprocess (pps ppx_deriving_yojson ppx_jane))
   (libraries
     lib
+    constants
     core
     core_unix.sys_unix
     core_unix.command_unix
