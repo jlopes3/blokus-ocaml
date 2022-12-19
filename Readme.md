@@ -6,7 +6,7 @@ Usage:
 
 To compile the project: `$ dune build`  
 To Run the tests: `$ dune test`  
-To initialize a game: `$ dune exec src/blokus.exe (number of AI players)`  
+To initialize a game: `$ dune exec src/blokus.exe init (number of AI players)`  
 To place a piece: `$ dune exec src/blokus.exe (Piece Number) (Representation Number) (Coordinate)`
 
 How the Game Works:
