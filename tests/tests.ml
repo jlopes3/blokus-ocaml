@@ -205,6 +205,13 @@ let test_play_piece _ =
   assert_equal (play_piece (data101, empty_board, ["1";"1";"A1"])) @@ (data101after, nonempty_board);
   assert_equal (play_piece (data101, empty_board, ["1";"1";"A10"])) @@ (data101, empty_board)
 
+let data111 = [["0";"2"];["0";"2"];["0";"2"];["0";"2"];[];["R"]];;
+let data112 = [["1";"2"];["1";"2"];["1";"2"];["1";"2"];[];["R"]];;
+
+let test_check_next_player _ =
+  assert_equal (check_next_player (data111, empty_board)) @@ game_over (data111, empty_board);
+  assert_equal (check_next_player (data112, empty_board)) @@ (data112, empty_board)
+
 
 let part1_tests = "Part 1" >: test_list [
   "Get_first" >:: test_get_first;
@@ -239,10 +246,11 @@ let part1_tests = "Part 1" >: test_list [
   "test_get_pieces" >:: test_get_pieces;
   "test_check_possible_rep_valid" >:: test_check_possible_rep_valid;
   "test_play_piece" >:: test_play_piece;
+  "test_check_next_player" >:: test_check_next_player;
 ]
 
 
-let series = "Assignment4 Tests" >::: [
+let series = "Final Tests" >::: [
     part1_tests;
   ]
 

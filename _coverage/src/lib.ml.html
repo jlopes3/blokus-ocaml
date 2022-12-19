@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8"/>
     <title>lib.ml &mdash; Coverage report</title>
-    <meta name="description" content="79.19% coverage in src/lib.ml">
+    <meta name="description" content="81.14% coverage in src/lib.ml">
     <link rel="stylesheet" href="../coverage.css"/>
     <script src="../highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
@@ -15,7 +15,7 @@
           <span class="dirname">src/</span>lib.ml
         </a>
       </h1>
-      <h2>79.19%</h2>
+      <h2>81.14%</h2>
     </div>
     <div id="navbar">
       <span class="unvisited" style="top:11.94%"></span>
@@ -48,11 +48,8 @@
       <span class="unvisited" style="bottom:13.74%"></span>
       <span class="unvisited" style="bottom:12.84%"></span>
       <span class="unvisited" style="bottom:12.61%"></span>
-      <span class="unvisited" style="bottom:11.71%"></span>
-      <span class="unvisited" style="bottom:11.49%"></span>
-      <span class="unvisited" style="bottom:11.26%"></span>
-      <span class="unvisited" style="bottom:11.04%"></span>
-      <span class="unvisited" style="bottom:10.81%"></span>
+      <span class="some-visited" style="bottom:11.49%"></span>
+      <span class="some-visited" style="bottom:11.04%"></span>
       <span class="unvisited" style="bottom:10.59%"></span>
       <span class="some-visited" style="bottom:6.53%"></span>
       <span class="some-visited" style="bottom:6.31%"></span>
@@ -456,11 +453,11 @@
 <a id="L389"></a><span > </span>
 <a id="L390"></a><span > </span>
 <a id="L391"></a><span > </span>
-<a id="L392"></a><span class="unvisited"> </span>
-<a id="L393"></a><span class="unvisited"> </span>
-<a id="L394"></a><span class="unvisited"> </span>
-<a id="L395"></a><span class="unvisited"> </span>
-<a id="L396"></a><span class="unvisited"> </span>
+<a id="L392"></a><span class="visited"> </span>
+<a id="L393"></a><span class="some-visited"> </span>
+<a id="L394"></a><span class="visited"> </span>
+<a id="L395"></a><span class="some-visited"> </span>
+<a id="L396"></a><span class="visited"> </span>
 <a id="L397"></a><span class="unvisited"> </span>
 <a id="L398"></a><span > </span>
 <a id="L399"></a><span > </span>
@@ -962,11 +959,11 @@
 open Constants
 
 let get_first (pair: 'a * 'b): 'a =
-  <span data-count="27">l</span>et (r1, _) = pair in
+  <span data-count="38">l</span>et (r1, _) = pair in
   r1;;
   
 let get_second (pair: 'a * 'b): 'b =
-  <span data-count="16">l</span>et (_, r2) = pair in
+  <span data-count="19">l</span>et (_, r2) = pair in
     r2;;
 
 let get_trio_first (trio: 'a * 'b * 'c): 'a =
@@ -995,7 +992,7 @@ let string_list_of_pieces (color: string) (data: string list list) : string list
 
 (* All for converting a board to a string *)
 let remove_first_char (inputString: string): string =
-  <span data-count="109213">S</span>tring.sub inputString ~pos:(1) ~len:(String.lengt<span data-count="109213">h</span> inputString - 1);;
+  <span data-count="109217">S</span>tring.sub inputString ~pos:(1) ~len:(String.lengt<span data-count="109217">h</span> inputString - 1);;
 
 let add_to_string (input: string) (input2: string): string = <span data-count="802">i</span>nput ^ "  " ^ input2;;
 
@@ -1038,15 +1035,15 @@ let make_list_of_chars (curr: string) : string list = <span data-count="79">c</s
 
 
 let rec subset_helper (data: 'a list) (final: int) (index: int) : 'a list =
-  <span data-count="332492">i</span>f (index = List.lengt<span data-count="332492">h</span> data) then <span data-count="5061">[</span>]
-  else <span data-count="327431">i</span>f ((index) = final + 1) then <span data-count="88253">[</span>]
-  else <span data-count="239178">L</span>ist.nth_ex<span data-count="239178">n</span> data index :: subset_helpe<span data-count="239178">r</span> data final (index + 1);;
+  <span data-count="332508">i</span>f (index = List.lengt<span data-count="332508">h</span> data) then <span data-count="5061">[</span>]
+  else <span data-count="327447">i</span>f ((index) = final + 1) then <span data-count="88257">[</span>]
+  else <span data-count="239190">L</span>ist.nth_ex<span data-count="239190">n</span> data index :: subset_helpe<span data-count="239190">r</span> data final (index + 1);;
 
 (* inclusive
   pre: start and final are valid indices of data  
 *)
 let subset (data: 'a list) (start: int) (final: int) : 'a list =
-  <span data-count="93314">s</span>ubset_helper data final start;;
+  <span data-count="93318">s</span>ubset_helper data final start;;
 
 
  
@@ -1095,10 +1092,10 @@ let update_pieces (color: string) (data: string list list) (to_remove: string) :
 
 
 let coord_col (coord: string) : int =
-  <span data-count="196199">(</span>Char.to_in<span data-count="196199">t</span> coord.[0]) - 65;;
+  <span data-count="196207">(</span>Char.to_in<span data-count="196207">t</span> coord.[0]) - 65;;
 
 let coord_row (coord: string) : int =
-  <span data-count="109189">(</span>int_of_strin<span data-count="109189">g</span> (remove_first_cha<span data-count="109189">r</span> coord)) - 1;;
+  <span data-count="109193">(</span>int_of_strin<span data-count="109193">g</span> (remove_first_cha<span data-count="109193">r</span> coord)) - 1;;
 
 
 
@@ -1130,38 +1127,38 @@ let put_piece_on_board (piece: string list list) (board: string list list) (coor
 (* Next 5 functions are for determining if a move is allowed *)
   
 let rec trim_section (sub_board: string list list) (piece: string list list) (coord: string) (index: int) : string list list =
-  <span data-count="93267">i</span>f (index = List.lengt<span data-count="93267">h</span> piece) then <span data-count="25515">[</span>]
-  else <span data-count="67752">i</span>f (index = List.lengt<span data-count="67752">h</span> sub_board) then <span data-count="0">[</span>]
-  else <span data-count="67752">s</span>ubse<span data-count="67752">t</span> (List.nth_ex<span data-count="67752">n</span> sub_board (index)) (coord_co<span data-count="67752">l</span> coord) ((-1) + (coord_co<span data-count="67752">l</span> coord) + List.lengt<span data-count="67752">h</span> (List.nth_ex<span data-count="67752">n</span> piece 0)) :: trim_sectio<span data-count="67752">n</span> sub_board piece coord (index + 1);;
+  <span data-count="93271">i</span>f (index = List.lengt<span data-count="93271">h</span> piece) then <span data-count="25516">[</span>]
+  else <span data-count="67755">i</span>f (index = List.lengt<span data-count="67755">h</span> sub_board) then <span data-count="0">[</span>]
+  else <span data-count="67755">s</span>ubse<span data-count="67755">t</span> (List.nth_ex<span data-count="67755">n</span> sub_board (index)) (coord_co<span data-count="67755">l</span> coord) ((-1) + (coord_co<span data-count="67755">l</span> coord) + List.lengt<span data-count="67755">h</span> (List.nth_ex<span data-count="67755">n</span> piece 0)) :: trim_sectio<span data-count="67755">n</span> sub_board piece coord (index + 1);;
 
 (* This gets the rectangular section of the board that the piece will be put onto *)
 let board_section_to_place (piece: string list list) (board: string list list) (coord: string) : string list list =
-  <span data-count="25515">t</span>rim_section (subse<span data-count="25515">t</span> board (coord_ro<span data-count="25515">w</span> coord) ((-1) + (coord_ro<span data-count="25515">w</span> coord) + List.lengt<span data-count="25515">h</span> piece)) piece coord 0;;
+  <span data-count="25516">t</span>rim_section (subse<span data-count="25516">t</span> board (coord_ro<span data-count="25516">w</span> coord) ((-1) + (coord_ro<span data-count="25516">w</span> coord) + List.lengt<span data-count="25516">h</span> piece)) piece coord 0;;
 
 let rec test_valid_placement_helper (sub_board: string list list) (piece: string list list) (index: int) (color: string) (same: bool): bool =
-  <span data-count="194637">i</span>f (List.lengt<span data-count="194637">h</span> sub_board) = 0 then <span data-count="0">t</span>rue
+  <span data-count="194647">i</span>f (List.lengt<span data-count="194647">h</span> sub_board) = 0 then <span data-count="0">t</span>rue
   else
-  <span data-count="194637">l</span>et col = index % (List.lengt<span data-count="194637">h</span> (List.nth_ex<span data-count="194637">n</span> sub_board 0)) in
-    <span data-count="194637">l</span>et row = index / (List.lengt<span data-count="194637">h</span> (List.nth_ex<span data-count="194637">n</span> sub_board 0)) in
-      if index = ((List.lengt<span data-count="194637">h</span> (List.nth_ex<span data-count="194637">n</span> sub_board 0)) * (List.lengt<span data-count="194637">h</span> sub_board)) then <span data-count="25099">t</span>rue &amp;&amp; <span data-count="25099">s</span>ame
-      else <span data-count="169538">i</span>f String.equal (List.nth_ex<span data-count="169538">n</span> (List.nth_ex<span data-count="169538">n</span> sub_board row) col) "-" then <span data-count="168859">t</span>est_valid_placement_helper sub_board piece (index + 1) color same
-      else <span data-count="679">i</span>f String.equal (List.nth_ex<span data-count="679">n</span> (List.nth_ex<span data-count="679">n</span> piece row) col) "X" then <span data-count="203">t</span>est_valid_placement_helper sub_board piece (index + 1) color same
-      else <span data-count="476">i</span>f String.equal (List.nth_ex<span data-count="476">n</span> (List.nth_ex<span data-count="476">n</span> sub_board row) col) color then 
-        <span data-count="61">i</span>f same then <span data-count="1">f</span>alse
-        else <span data-count="60">t</span>est_valid_placement_helper sub_board piece (index + 1) color true
+  <span data-count="194647">l</span>et col = index % (List.lengt<span data-count="194647">h</span> (List.nth_ex<span data-count="194647">n</span> sub_board 0)) in
+    <span data-count="194647">l</span>et row = index / (List.lengt<span data-count="194647">h</span> (List.nth_ex<span data-count="194647">n</span> sub_board 0)) in
+      if index = ((List.lengt<span data-count="194647">h</span> (List.nth_ex<span data-count="194647">n</span> sub_board 0)) * (List.lengt<span data-count="194647">h</span> sub_board)) then <span data-count="25100">t</span>rue &amp;&amp; <span data-count="25100">s</span>ame
+      else <span data-count="169547">i</span>f String.equal (List.nth_ex<span data-count="169547">n</span> (List.nth_ex<span data-count="169547">n</span> sub_board row) col) "-" then <span data-count="168867">t</span>est_valid_placement_helper sub_board piece (index + 1) color same
+      else <span data-count="680">i</span>f String.equal (List.nth_ex<span data-count="680">n</span> (List.nth_ex<span data-count="680">n</span> piece row) col) "X" then <span data-count="203">t</span>est_valid_placement_helper sub_board piece (index + 1) color same
+      else <span data-count="477">i</span>f String.equal (List.nth_ex<span data-count="477">n</span> (List.nth_ex<span data-count="477">n</span> sub_board row) col) color then 
+        <span data-count="62">i</span>f same then <span data-count="1">f</span>alse
+        else <span data-count="61">t</span>est_valid_placement_helper sub_board piece (index + 1) color true
       else <span data-count="415">f</span>alse;;
 
 (* This determines if the piece is overlaps one tile of the color and no other tiles *)
 let test_valid_placement (sub_board: string list list) (piece: string list list) (color: string) : bool =
-  <span data-count="25515">t</span>est_valid_placement_helper sub_board piece 0 color false;;
+  <span data-count="25516">t</span>est_valid_placement_helper sub_board piece 0 color false;;
 
 (* This functions determines if the move is allowed in terms of in bounds and only overlapping one tile of the same color *)
 let try_put_piece_on_board (piece: string list list) (board: string list list) (coord: string) (color: string): bool =
-   <span data-count="30330">i</span>f (coord_co<span data-count="30330">l</span> coord &lt; 0) then <span data-count="1">f</span>alse
-   else <span data-count="30329">i</span>f (coord_ro<span data-count="30329">w</span> coord &lt; 0) then <span data-count="1">f</span>alse
-   else <span data-count="30328">i</span>f ((coord_co<span data-count="30328">l</span> coord) + (List.lengt<span data-count="30328">h</span> (List.nth_ex<span data-count="30328">n</span> piece 0)) - 1 &gt; 19) then <span data-count="2529">f</span>alse
-   else <span data-count="27799">i</span>f ((coord_ro<span data-count="27799">w</span> coord) + (List.lengt<span data-count="27799">h</span> piece) - 1 &gt; 19) then <span data-count="2284">f</span>alse
-   else <span data-count="25515">t</span>est_valid_placement (board_section_to_plac<span data-count="25515">e</span> piece board coord) piece color;;
+   <span data-count="30331">i</span>f (coord_co<span data-count="30331">l</span> coord &lt; 0) then <span data-count="1">f</span>alse
+   else <span data-count="30330">i</span>f (coord_ro<span data-count="30330">w</span> coord &lt; 0) then <span data-count="1">f</span>alse
+   else <span data-count="30329">i</span>f ((coord_co<span data-count="30329">l</span> coord) + (List.lengt<span data-count="30329">h</span> (List.nth_ex<span data-count="30329">n</span> piece 0)) - 1 &gt; 19) then <span data-count="2529">f</span>alse
+   else <span data-count="27800">i</span>f ((coord_ro<span data-count="27800">w</span> coord) + (List.lengt<span data-count="27800">h</span> piece) - 1 &gt; 19) then <span data-count="2284">f</span>alse
+   else <span data-count="25516">t</span>est_valid_placement (board_section_to_plac<span data-count="25516">e</span> piece board coord) piece color;;
 
 
 
@@ -1171,44 +1168,44 @@ let try_put_piece_on_board (piece: string list list) (board: string list list) (
 (* Next 9 functions are used to see if there are any possible moves for a particular player *)
 
 let col_row_to_coord (col: int) (row: int) : string =
-  <span data-count="30321">(</span>String.mak<span data-count="30321">e</span> 1 (char_of_in<span data-count="30321">t</span> (col + 65))) ^ (string_of_in<span data-count="30321">t</span> (row + 1));;
+  <span data-count="30322">(</span>String.mak<span data-count="30322">e</span> 1 (char_of_in<span data-count="30322">t</span> (col + 65))) ^ (string_of_in<span data-count="30322">t</span> (row + 1));;
 
 let rec get_pieces_test_helper (curr: int) (hand: string list) : string list list list list =
-  <span data-count="90">i</span>f (curr = List.lengt<span data-count="90">h</span> piecesStrings) then <span data-count="0">[</span>]
-  else <span data-count="90">i</span>f (curr = List.lengt<span data-count="90">h</span> hand) then <span data-count="5">[</span>]
-  else <span data-count="85">L</span>ist.nth_ex<span data-count="85">n</span> pieces (int_of_strin<span data-count="85">g</span> (List.nth_ex<span data-count="85">n</span> hand curr)) :: get_pieces_test_helpe<span data-count="85">r</span> (curr + 1) hand;;
+  <span data-count="93">i</span>f (curr = List.lengt<span data-count="93">h</span> piecesStrings) then <span data-count="0">[</span>]
+  else <span data-count="93">i</span>f (curr = List.lengt<span data-count="93">h</span> hand) then <span data-count="6">[</span>]
+  else <span data-count="87">L</span>ist.nth_ex<span data-count="87">n</span> pieces (int_of_strin<span data-count="87">g</span> (List.nth_ex<span data-count="87">n</span> hand curr)) :: get_pieces_test_helpe<span data-count="87">r</span> (curr + 1) hand;;
 
 let get_pieces_test  (color: string) (data: string list list) : string list list list list =
-  <span data-count="5">m</span>atch color with 
-  | <span data-count="2">"</span>R" -&gt; get_pieces_test_helper 0 (List.nth_ex<span data-count="2">n</span> data 0)
+  <span data-count="6">m</span>atch color with 
+  | <span data-count="3">"</span>R" -&gt; get_pieces_test_helper 0 (List.nth_ex<span data-count="3">n</span> data 0)
   | <span data-count="1">"</span>Y" -&gt; get_pieces_test_helper 0 (List.nth_ex<span data-count="1">n</span> data 1)
   | <span data-count="1">"</span>B" -&gt; get_pieces_test_helper 0 (List.nth_ex<span data-count="1">n</span> data 2)
   | <span data-count="1">"</span>G" -&gt; get_pieces_test_helper 0 (List.nth_ex<span data-count="1">n</span> data 3)
   | <span data-count="0">_</span> -&gt; [[[["\n     ERROR!\n"]]]];;
 
 let rec test_piece_rep_possible_move_helper (board: string list list) (piece: string list list) (index: int) (color: string): bool =
-  <span data-count="30393">l</span>et col = index % (List.lengt<span data-count="30393">h</span> (List.nth_ex<span data-count="30393">n</span> board 0)) in
-    <span data-count="30393">l</span>et row = index / (List.lengt<span data-count="30393">h</span> (List.nth_ex<span data-count="30393">n</span> board 0)) in
-      if index = ((List.lengt<span data-count="30393">h</span> (List.nth_ex<span data-count="30393">n</span> board 0)) * (List.lengt<span data-count="30393">h</span> board)) then <span data-count="74">f</span>alse
-      else <span data-count="30319">i</span>f try_put_piece_on_board piece board (col_row_to_coor<span data-count="30319">d</span> col row) color then <span data-count="5">t</span>rue
+  <span data-count="30394">l</span>et col = index % (List.lengt<span data-count="30394">h</span> (List.nth_ex<span data-count="30394">n</span> board 0)) in
+    <span data-count="30394">l</span>et row = index / (List.lengt<span data-count="30394">h</span> (List.nth_ex<span data-count="30394">n</span> board 0)) in
+      if index = ((List.lengt<span data-count="30394">h</span> (List.nth_ex<span data-count="30394">n</span> board 0)) * (List.lengt<span data-count="30394">h</span> board)) then <span data-count="74">f</span>alse
+      else <span data-count="30320">i</span>f try_put_piece_on_board piece board (col_row_to_coor<span data-count="30320">d</span> col row) color then <span data-count="6">t</span>rue
       else <span data-count="30314">t</span>est_piece_rep_possible_move_helper board piece (index + 1) color;;
 
 let test_piece_rep_possible_move (board: string list list) (piece: string list list) (color: string) : bool =
-  <span data-count="79">t</span>est_piece_rep_possible_move_helper board piece 0 color;;
+  <span data-count="80">t</span>est_piece_rep_possible_move_helper board piece 0 color;;
 
 let rec test_piece_possible_move_helper (board: string list list) (piece: string list list list) (color: string) (counter: int) : bool =
-  <span data-count="95">i</span>f counter = (List.lengt<span data-count="95">h</span> piece) then <span data-count="17">f</span>alse
-  else <span data-count="78">t</span>est_piece_rep_possible_mov<span data-count="78">e</span> board (List.nth_ex<span data-count="78">n</span> piece counter) colo<span data-count="4">r</span> || test_piece_possible_move_helper board piece color (counter + 1);;
+  <span data-count="96">i</span>f counter = (List.lengt<span data-count="96">h</span> piece) then <span data-count="17">f</span>alse
+  else <span data-count="79">t</span>est_piece_rep_possible_mov<span data-count="79">e</span> board (List.nth_ex<span data-count="79">n</span> piece counter) colo<span data-count="5">r</span> || test_piece_possible_move_helper board piece color (counter + 1);;
 
 let test_piece_possible_move (board: string list list) (piece: string list list list) (color: string) : bool =
-  <span data-count="21">t</span>est_piece_possible_move_helper board piece color 0;;
+  <span data-count="22">t</span>est_piece_possible_move_helper board piece color 0;;
 
 let rec test_all_possible_moves_helper (board: string list list) (pieces: string list list list list) (color: string) (counter: int) : bool =
-  <span data-count="22">i</span>f counter = (List.lengt<span data-count="22">h</span> pieces) then <span data-count="1">f</span>alse
-  else <span data-count="21">t</span>est_piece_possible_mov<span data-count="21">e</span> board (List.nth_ex<span data-count="21">n</span> pieces counter) colo<span data-count="4">r</span> || test_all_possible_moves_helper board pieces color (counter + 1);;
+  <span data-count="23">i</span>f counter = (List.lengt<span data-count="23">h</span> pieces) then <span data-count="1">f</span>alse
+  else <span data-count="22">t</span>est_piece_possible_mov<span data-count="22">e</span> board (List.nth_ex<span data-count="22">n</span> pieces counter) colo<span data-count="5">r</span> || test_all_possible_moves_helper board pieces color (counter + 1);;
 
 let test_all_possible_moves (board: string list list) (color: string) (data: string list list) : bool =
-  <span data-count="5">t</span>est_all_possible_moves_helper board (get_pieces_tes<span data-count="5">t</span> color data) color 0;;
+  <span data-count="6">t</span>est_all_possible_moves_helper board (get_pieces_tes<span data-count="6">t</span> color data) color 0;;
 
 
 
@@ -1222,17 +1219,17 @@ let player_score (hand: string list) : string =
 
 (* Looks for a 0 in data that signifies that a player has no more moves *)
 let check_for_0  (color: string) (data: string list list) : bool =
-<span data-count="11">m</span>atch color with 
-| <span data-count="4">"</span>R" -&gt; String.equal "0" (List.nth_ex<span data-count="4">n</span>(List.nth_ex<span data-count="4">n</span> data 0) 0)
-| <span data-count="3">"</span>Y" -&gt; String.equal "0" (List.nth_ex<span data-count="3">n</span>(List.nth_ex<span data-count="3">n</span> data 1) 0)
-| <span data-count="2">"</span>B" -&gt; String.equal "0" (List.nth_ex<span data-count="2">n</span>(List.nth_ex<span data-count="2">n</span> data 2) 0)
-| <span data-count="2">"</span>G" -&gt; String.equal "0" (List.nth_ex<span data-count="2">n</span>(List.nth_ex<span data-count="2">n</span> data 3) 0)
+<span data-count="17">m</span>atch color with 
+| <span data-count="7">"</span>R" -&gt; String.equal "0" (List.nth_ex<span data-count="7">n</span>(List.nth_ex<span data-count="7">n</span> data 0) 0)
+| <span data-count="4">"</span>Y" -&gt; String.equal "0" (List.nth_ex<span data-count="4">n</span>(List.nth_ex<span data-count="4">n</span> data 1) 0)
+| <span data-count="3">"</span>B" -&gt; String.equal "0" (List.nth_ex<span data-count="3">n</span>(List.nth_ex<span data-count="3">n</span> data 2) 0)
+| <span data-count="3">"</span>G" -&gt; String.equal "0" (List.nth_ex<span data-count="3">n</span>(List.nth_ex<span data-count="3">n</span> data 3) 0)
 | <span data-count="0">_</span> -&gt; true;;
 
 let check_next_player_done (loaded: (string list list * string list list)): bool =
-  <span data-count="7">l</span>et data = get_first loaded in
-    <span data-count="7">l</span>et color = (List.nth_exn (List.nth_ex<span data-count="7">n</span> data 5) 0) in
-      <span data-count="7">c</span>heck_for_0 color data;;
+  <span data-count="8">l</span>et data = get_first loaded in
+    <span data-count="8">l</span>et color = (List.nth_exn (List.nth_ex<span data-count="8">n</span> data 5) 0) in
+      <span data-count="8">c</span>heck_for_0 color data;;
 
 (* Fills in the data for when a playeer is skipped *)
 let skip_player (color: string) (data: string list list) : string list list =
@@ -1258,17 +1255,17 @@ let rec skip_turn_try_multiple (loaded: (string list list * string list list)) :
 
 
 let game_over (loaded: (string list list * string list list)): (string list list * string list list) =
-  <span data-count="1">(</span>(get_firs<span data-count="1">t</span> loaded) @ [["GAME OVER!"]], get_secon<span data-count="1">d</span> loaded);;
+  <span data-count="3">(</span>(get_firs<span data-count="3">t</span> loaded) @ [["GAME OVER!"]], get_secon<span data-count="3">d</span> loaded);;
 
 let check_game_over (loaded: (string list list * string list list)): bool =
-  <span data-count="1">c</span>heck_for_<span data-count="1">0</span> "R" (get_firs<span data-count="1">t</span> loaded) &amp;&amp; <span data-count="1">c</span>heck_for_<span data-count="1">0</span> "Y" (get_firs<span data-count="1">t</span> loaded) &amp;&amp; <span data-count="1">c</span>heck_for_<span data-count="1">0</span> "B" (get_firs<span data-count="1">t</span> loaded) &amp;&amp; <span data-count="1">c</span>heck_for_0 "G" (get_firs<span data-count="1">t</span> loaded);;
+  <span data-count="3">c</span>heck_for_<span data-count="3">0</span> "R" (get_firs<span data-count="3">t</span> loaded) &amp;&amp; <span data-count="2">c</span>heck_for_<span data-count="2">0</span> "Y" (get_firs<span data-count="2">t</span> loaded) &amp;&amp; <span data-count="2">c</span>heck_for_<span data-count="2">0</span> "B" (get_firs<span data-count="2">t</span> loaded) &amp;&amp; <span data-count="2">c</span>heck_for_0 "G" (get_firs<span data-count="2">t</span> loaded);;
 
   
 (* Next 15/16 functions are for the ai moves *)
 
 let check_ai (data: string list list) : bool =
-  <span data-count="2">l</span>et next_player = List.nth_exn (List.nth_ex<span data-count="2">n</span> data 5) 0 in
-    <span data-count="2">L</span>ist.fold ~f:(||) ~init:(false) (List.ma<span data-count="2">p</span> ~f:(String.equa<span data-count="2">l</span> next_player) (List.nth_ex<span data-count="2">n</span> data 4));;
+  <span data-count="3">l</span>et next_player = List.nth_exn (List.nth_ex<span data-count="3">n</span> data 5) 0 in
+    <span data-count="3">L</span>ist.fold ~f:(||) ~init:(false) (List.ma<span data-count="3">p</span> ~f:(String.equa<span data-count="3">l</span> next_player) (List.nth_ex<span data-count="3">n</span> data 4));;
 
 let rec iota1 (n: int): string list =
   <span data-count="3">i</span>f n = 0 then <span data-count="0">[</span>]
@@ -1349,11 +1346,11 @@ let rec ai_move_try_multiple (loaded: (string list list * string list list)) : (
 
 
 let check_next_player (loaded: (string list list * string list list)) : (string list list * string list list) =
-  <span data-count="0">i</span>f check_game_over loaded then <span data-count="0">(</span>game_over loaded)
-  else <span data-count="0">i</span>f (check_next_player_done loaded) then <span data-count="0">(</span>skip_turn_try_multiple loaded)
-  else <span data-count="0">i</span>f (test_all_possible_moves (get_secon<span data-count="0">d</span> loaded) (List.nth_ex<span data-count="0">n</span> (List.nth_ex<span data-count="0">n</span> (get_firs<span data-count="0">t</span> loaded) 5) 0) (get_firs<span data-count="0">t</span> loaded)) then 
-    <span data-count="0">i</span>f (check_ai (get_firs<span data-count="0">t</span> loaded)) then <span data-count="0">a</span>i_move_try_multiple loaded
-    else <span data-count="0">l</span>oaded
+  <span data-count="2">i</span>f check_game_over loaded then <span data-count="1">(</span>game_over loaded)
+  else <span data-count="1">i</span>f (check_next_player_done loaded) then <span data-count="0">(</span>skip_turn_try_multiple loaded)
+  else <span data-count="1">i</span>f (test_all_possible_moves (get_secon<span data-count="1">d</span> loaded) (List.nth_ex<span data-count="1">n</span> (List.nth_ex<span data-count="1">n</span> (get_firs<span data-count="1">t</span> loaded) 5) 0) (get_firs<span data-count="1">t</span> loaded)) then 
+    <span data-count="1">i</span>f (check_ai (get_firs<span data-count="1">t</span> loaded)) then <span data-count="0">a</span>i_move_try_multiple loaded
+    else <span data-count="1">l</span>oaded
   else <span data-count="0">(</span>skip_turn loaded);;
 
 (* If there are multiple people to be skipped, this funcitons calls itself *)  
@@ -1401,7 +1398,7 @@ let print_state (loaded: (string list list * string list list)) =
 let game_over_string (over: bool) (pair:(string list list * string list list)): string =
   <span data-count="0">i</span>f over then <span data-count="0">(</span>to_string_file (get_firs<span data-count="0">t</span> pair))
   else <span data-count="0">(</span>(to_string_fil<span data-count="0">e</span> (subse<span data-count="0">t</span> (get_firs<span data-count="0">t</span> pair) 0 3)) ^ (ai_strin<span data-count="0">g</span> (string_of_in<span data-count="0">t</span> (List.lengt<span data-count="0">h</span> (List.nth_ex<span data-count="0">n</span> (get_firs<span data-count="0">t</span> pair) 4)))) ^ "      " ^ (List.nth_ex<span data-count="0">n</span> (List.nth_ex<span data-count="0">n</span> (get_firs<span data-count="0">t</span> pair) 5) 0) ^ "\n"^ (to_string_fil<span data-count="0">e</span> (get_secon<span data-count="0">d</span> pair)));;
-  
+    
 </code></pre>
       </div>
     </div>
