@@ -79,7 +79,7 @@ let command_args = Array.to_list (Sys.get_argv ());;
 let not_init =
   if (List.length command_args < 4) then print_endline "\nNot enough arguments to make a move.\nUse: dune exec src/blokus.exe (Piece Number) (Representation Number) (Coordinate)\n "
   else if ((int_of_string (List.nth_exn command_args 1)) > List.length num_list) || (int_of_string (List.nth_exn command_args 2) > 8) then print_endline "\nInvalid arguments.\nUse: dune exec src/blokus.exe (Piece Number) (Representation Number) (Coordinate)\n "
-  else if (coord_col (List.nth_exn command_args 3) < 0 || coord_col (List.nth_exn command_args 3) > 19) || (coord_row (List.nth_exn command_args 3) < 0 || coord_row (List.nth_exn command_args 3) > 19) then print_endline "\nInvalid coordinate.\nUse: dune exec src/blokus.exe (Piece Number) (Representation Number) (Coordinate)\nCoordinate should be in the form of (A-T)(1-20)\n"
+  else if (coord_col (List.nth_exn command_args 3) < 0 || coord_col (List.nth_exn command_args 3) > 19) || (coord_row (List.nth_exn command_args 3) < 0 || coord_row (List.nth_exn command_args 3) > 19) then print_endline "\nInvalid coordinate.\nUse: dune exec src/blokus.exe (Piece Number) (Representation Number) (Coordinate)\nCoordinate should be in the form of (A-T)(1-20)"
   else 
     let new_state = process_command_line load_game (command_args) |> play_piece |> check_next_player in
      write_game new_state;
