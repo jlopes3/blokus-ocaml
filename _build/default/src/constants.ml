@@ -386,7 +386,7 @@ let piece21: string list list list = [[["P";"P";"X"];["X";"P";"X"];["X";"P";"P"]
 let piece21String: string ="     Piece 21:\n     PP    P  PP P\n      P  PPP  P  PPP\n      PP P   PP    P\n";;
 
 
-(* Twenty-first piece in all representations 
+(* Twenty-second piece in all representations 
    
   Representation 1: P P X
                     P P P 
@@ -398,20 +398,33 @@ let piece21String: string ="     Piece 21:\n     PP    P  PP P\n      P  PPP  P 
 let piece22: string list list list = [[["P";"P";"X"];["P";"P";"P"];["X";"P";"P"]];   [["X";"P";"P"];["P";"P";"P"];["P";"P";"X"]];        [["X";"P";"P"];["X";"P";"X"];["P";"P";"X"]];        [["P";"X";"X"];["P";"P";"P"];["X";"X";"P"]]  ];;
 let piece22String: string ="     Piece 22:\n     PP   PP\n     PPP PPP\n      PP PP\n";;
 
+(* Twenty-third piece in all representations 
+   
+  Representation 1: P P P P
+                    P X X P 
+                    P X X P
+                    P P P P
+*)
+let piece23: string list list list = [[["P";"P";"P";"P"];["P";"X";"X";"P"];["P";"X";"X";"P"];["P";"P";"P";"P"]] ];;
+let piece23String: string ="     Piece 22:\n     PPPP\n     P  P\n     P  P\n     PPPP\n";;
+
 
 
 (* List of all pieces *)
-let pieces: string list list list list = [[[["Placeholder"]]];piece1;piece2;piece3;piece4;piece5;piece6;piece7;piece8;piece9;piece10;piece11;piece12;piece13;piece14;piece15;piece16;piece17;piece18;piece19;piece20;piece21;piece22]
+let pieces: string list list list list = [[[["Placeholder"]]];piece1;piece2;piece3;piece4;piece5;piece6;piece7;piece8;piece9;piece10;piece11;piece12;piece13;piece14;piece15;piece16;piece17;piece18;piece19;piece20;piece21;piece22;piece23]
 
 (* List of string representation of all pieces *)
-let piecesStrings: string list = ["Placeholder";piece1String;piece2String;piece3String;piece4String;piece5String;piece6String;piece7String;piece8String;piece9String;piece10String;piece11String;piece12String;piece13String;piece14String;piece15String;piece16String;piece17String;piece18String;piece19String;piece20String;piece21String;piece22String];;
+let piecesStrings: string list = ["Placeholder";piece1String;piece2String;piece3String;piece4String;piece5String;piece6String;piece7String;piece8String;piece9String;piece10String;piece11String;piece12String;piece13String;piece14String;piece15String;piece16String;piece17String;piece18String;piece19String;piece20String;piece21String;piece22String;piece23String];;
 
 (* This is the score associated with each piece. The score is just the amount of tiles the piece covers *)
-let piecesScore: int list = [0;9;2;3;3;4;4;4;4;4;5;5;5;5;5;5;5;5;5;5;5;5;7];;
+let piecesScore: int list = [0;9;2;3;3;4;4;4;4;4;5;5;5;5;5;5;5;5;5;5;5;5;7;12];;
 
 
 (* This is used to start the game *)
 let empty_board: string list list = [["R";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"Y"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-"];["G";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"-";"B"]];;
 
-(* This is the pieces each players starts with *)
-let num_list: string list = ["1"; "2"; "3"; "4"; "5"; "6"; "7"; "8"; "9"; "10"; "11"; "12"; "13"; "14"; "15"; "16"; "17"; "18"; "19"; "20"; "21"; "22"];;
+(* This is the pieces each players starts with. This can be changed and to include numbers up to and includes 23 *)
+let num_list: string list = ["1"; "2"; "3"; "4"; "5"; "6"; "7"; "8"; "9"; "10"; "11"; "12"; "13"; "14"; "15"; "16"; "17"];;
+
+
+

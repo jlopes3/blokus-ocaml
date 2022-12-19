@@ -39,8 +39,8 @@ let load_game =
 
 
 let game_over_string (over: bool) (pair:(string list list * string list list)): string =
-  if over then (board_to_string_file (get_first pair))
-  else ((pieces_to_string_file (subset (get_first pair) 0 3)) ^ (ai_string (string_of_int (List.length (List.nth_exn (get_first pair) 4)))) ^ "      " ^ (List.nth_exn (List.nth_exn (get_first pair) 5) 0) ^ "\n"^ (board_to_string_file (get_second pair)));;
+  if over then (to_string_file (get_first pair))
+  else ((to_string_file (subset (get_first pair) 0 3)) ^ (ai_string (string_of_int (List.length (List.nth_exn (get_first pair) 4)))) ^ "      " ^ (List.nth_exn (List.nth_exn (get_first pair) 5) 0) ^ "\n"^ (to_string_file (get_second pair)));;
 
 
 (* Write the new state of the game to state.txt
@@ -68,7 +68,7 @@ let write_game (pair:(string list list * string list list)) =
 
 
 let create_game (num_ai: string) = 
-  Out_channel.write_all "state.txt" ~data:((pieces_to_string_file [num_list; num_list; num_list; num_list]) ^ (ai_string num_ai) ^ "      R\n"^ (board_to_string_file empty_board));
+  Out_channel.write_all "state.txt" ~data:((to_string_file [num_list; num_list; num_list; num_list]) ^ (ai_string num_ai) ^ "      R\n"^ (to_string_file empty_board));
   ([num_list; num_list; num_list; num_list] @ [[ai_string num_ai]] @ [["R"]], empty_board)|> print_state;;
 
 
@@ -77,13 +77,17 @@ let command_args = Array.to_list (Sys.get_argv ());;
 
 
 let not_init =
-  if (List.length command_args < 4) then print_string ""
+  if (List.length command_args < 4) then print_endline "\nNot enough arguments to make a move.\nUse: dune exec src/blokus.exe (Piece Number) (Representation Number) (Coordinate)\n "
+  else if ((int_of_string (List.nth_exn command_args 1)) > List.length num_list) || (int_of_string (List.nth_exn command_args 2) > 8) then print_endline "\nInvalid arguments.\nUse: dune exec src/blokus.exe (Piece Number) (Representation Number) (Coordinate)\n "
+  else if (coord_col (List.nth_exn command_args 3) < 0 || coord_col (List.nth_exn command_args 3) > 19) || (coord_row (List.nth_exn command_args 3) < 0 || coord_row (List.nth_exn command_args 3) > 19) then print_endline "\nInvalid coordinate.\nUse: dune exec src/blokus.exe (Piece Number) (Representation Number) (Coordinate)\nCoordinate should be in the form of (A-T)(1-20)\n"
   else 
     let new_state = process_command_line load_game (command_args) |> play_piece |> check_next_player in
      write_game new_state;
      print_state new_state;;
 
 let () = 
-if (String.equal (List.nth_exn command_args 1) "init") then create_game (List.nth_exn command_args 2)
+if (String.equal (List.nth_exn command_args 1) "init") then 
+  if not ((String.equal (List.nth_exn command_args 2) "0") || (String.equal (List.nth_exn command_args 2) "1") || (String.equal (List.nth_exn command_args 2) "2") || (String.equal (List.nth_exn command_args 2) "3")) then print_endline "\nInvalid initialization of game.\nUse: dune exec src/blokus.exe init (number of AI's)\nNumber of AI's must be between 0 and 3 inclusive.\n"
+  else create_game (List.nth_exn command_args 2)
 else not_init;;
 
