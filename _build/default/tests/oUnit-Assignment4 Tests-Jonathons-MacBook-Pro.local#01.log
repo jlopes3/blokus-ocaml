@@ -1,33 +1,33 @@
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: Start test Assignment4 Tests:0:Part 1:0:Get_first.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: Test Assignment4 Tests:0:Part 1:0:Get_first is successful.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: End test Assignment4 Tests:0:Part 1:0:Get_first.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: Start test Assignment4 Tests:0:Part 1:3:Get_trio_second.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: Test Assignment4 Tests:0:Part 1:3:Get_trio_second is successful.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: End test Assignment4 Tests:0:Part 1:3:Get_trio_second.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: Start test Assignment4 Tests:0:Part 1:5:Ai_string.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: Test Assignment4 Tests:0:Part 1:5:Ai_string is successful.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: End test Assignment4 Tests:0:Part 1:5:Ai_string.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: Start test Assignment4 Tests:0:Part 1:6:next_color.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: Test Assignment4 Tests:0:Part 1:6:next_color is successful.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: End test Assignment4 Tests:0:Part 1:6:next_color.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: Start test Assignment4 Tests:0:Part 1:9:test_not.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: Test Assignment4 Tests:0:Part 1:9:test_not is successful.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: End test Assignment4 Tests:0:Part 1:9:test_not.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: Start test Assignment4 Tests:0:Part 1:10:test_string_list_of_pieces.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: Test Assignment4 Tests:0:Part 1:10:test_string_list_of_pieces is successful.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: End test Assignment4 Tests:0:Part 1:10:test_string_list_of_pieces.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: Start test Assignment4 Tests:0:Part 1:13:test_remove_double_digits.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: Test Assignment4 Tests:0:Part 1:13:test_remove_double_digits is successful.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: End test Assignment4 Tests:0:Part 1:13:test_remove_double_digits.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: Start test Assignment4 Tests:0:Part 1:14:test_make_list_funcs.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: Test Assignment4 Tests:0:Part 1:14:test_make_list_funcs is successful.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: End test Assignment4 Tests:0:Part 1:14:test_make_list_funcs.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: Start test Assignment4 Tests:0:Part 1:17:test_update_pieces.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: Test Assignment4 Tests:0:Part 1:17:test_update_pieces is successful.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: End test Assignment4 Tests:0:Part 1:17:test_update_pieces.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: Start test Assignment4 Tests:0:Part 1:19:test_put_piece_on_board.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: Test Assignment4 Tests:0:Part 1:19:test_put_piece_on_board is successful.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: End test Assignment4 Tests:0:Part 1:19:test_put_piece_on_board.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: Start test Assignment4 Tests:0:Part 1:21:test_test_all_possible_moves.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: Test Assignment4 Tests:0:Part 1:21:test_test_all_possible_moves is successful.
-2022-12-19T13:25:59+00:00 Jonathons-MacBook-Pro.local#01 I: End test Assignment4 Tests:0:Part 1:21:test_test_all_possible_moves.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: Start test Assignment4 Tests:0:Part 1:0:Get_first.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: Test Assignment4 Tests:0:Part 1:0:Get_first is successful.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: End test Assignment4 Tests:0:Part 1:0:Get_first.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: Start test Assignment4 Tests:0:Part 1:2:Get_trio_first.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: Test Assignment4 Tests:0:Part 1:2:Get_trio_first is successful.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: End test Assignment4 Tests:0:Part 1:2:Get_trio_first.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: Start test Assignment4 Tests:0:Part 1:4:Get_trio_third.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: Test Assignment4 Tests:0:Part 1:4:Get_trio_third is successful.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: End test Assignment4 Tests:0:Part 1:4:Get_trio_third.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: Start test Assignment4 Tests:0:Part 1:7:test_intro_string.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: Test Assignment4 Tests:0:Part 1:7:test_intro_string is successful.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: End test Assignment4 Tests:0:Part 1:7:test_intro_string.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: Start test Assignment4 Tests:0:Part 1:9:test_not.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: Test Assignment4 Tests:0:Part 1:9:test_not is successful.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: End test Assignment4 Tests:0:Part 1:9:test_not.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: Start test Assignment4 Tests:0:Part 1:11:test_row_to_string.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: Test Assignment4 Tests:0:Part 1:11:test_row_to_string is successful.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: End test Assignment4 Tests:0:Part 1:11:test_row_to_string.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: Start test Assignment4 Tests:0:Part 1:13:test_remove_double_digits.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: Test Assignment4 Tests:0:Part 1:13:test_remove_double_digits is successful.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: End test Assignment4 Tests:0:Part 1:13:test_remove_double_digits.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: Start test Assignment4 Tests:0:Part 1:15:test_subset.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: Test Assignment4 Tests:0:Part 1:15:test_subset is successful.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: End test Assignment4 Tests:0:Part 1:15:test_subset.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: Start test Assignment4 Tests:0:Part 1:17:test_update_pieces.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: Test Assignment4 Tests:0:Part 1:17:test_update_pieces is successful.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: End test Assignment4 Tests:0:Part 1:17:test_update_pieces.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: Start test Assignment4 Tests:0:Part 1:19:test_put_piece_on_board.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: Test Assignment4 Tests:0:Part 1:19:test_put_piece_on_board is successful.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: End test Assignment4 Tests:0:Part 1:19:test_put_piece_on_board.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: Start test Assignment4 Tests:0:Part 1:21:test_test_all_possible_moves.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: Test Assignment4 Tests:0:Part 1:21:test_test_all_possible_moves is successful.
+2022-12-19T17:44:03+00:00 Jonathons-MacBook-Pro.local#01 I: End test Assignment4 Tests:0:Part 1:21:test_test_all_possible_moves.

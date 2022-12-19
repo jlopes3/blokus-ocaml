@@ -437,3 +437,8 @@ let score_string (data: string list list) : string =
 let print_state (loaded: (string list list * string list list)) =
   if (check_game_over loaded) then print_endline (board_to_string_stdio (get_second loaded) ^ "\nGame is over! Lowest score wins!\n" ^ score_string (get_first loaded))
   else print_endline (board_to_string_stdio (get_second loaded) ^ player_string (get_first loaded));;
+
+let game_over_string (over: bool) (pair:(string list list * string list list)): string =
+  if over then (to_string_file (get_first pair))
+  else ((to_string_file (subset (get_first pair) 0 3)) ^ (ai_string (string_of_int (List.length (List.nth_exn (get_first pair) 4)))) ^ "      " ^ (List.nth_exn (List.nth_exn (get_first pair) 5) 0) ^ "\n"^ (to_string_file (get_second pair)));;
+    

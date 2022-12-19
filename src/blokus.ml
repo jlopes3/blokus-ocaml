@@ -38,9 +38,6 @@ let load_game =
 
 
 
-let game_over_string (over: bool) (pair:(string list list * string list list)): string =
-  if over then (to_string_file (get_first pair))
-  else ((to_string_file (subset (get_first pair) 0 3)) ^ (ai_string (string_of_int (List.length (List.nth_exn (get_first pair) 4)))) ^ "      " ^ (List.nth_exn (List.nth_exn (get_first pair) 5) 0) ^ "\n"^ (to_string_file (get_second pair)));;
 
 
 (* Write the new state of the game to state.txt
